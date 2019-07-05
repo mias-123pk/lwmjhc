@@ -1,0 +1,39 @@
+功能说明：巡回检查
+功能数据表：
+       巡检任务实例表:CZ_TASK_INSPECTION
+       巡检点实例表:CZ_TASK_INSPECTION_POINT
+       巡检内容实例表:CZ_TASK_INSPECTION_CONTENT
+      巡检要求实例表:CZ_TASK_INSPECTION_REQUIRE
+      
+      巡检结果图片表: CZ_TASK_INSPECTION_PICTURE
+      
+      问题上报流程任务表CZ_TASK_PROBLEM_REPORT
+      问题图片表CZ_TASK_PROBLEM_REPORTPHO
+  
+任务状态约定
+     未完成：UNFINISHED
+     已完成：FINISHED
+     超期未完成：OVERDUE
+     进入隐患：WARN
+     
+附件类别约定：
+巡检内容：xjcontent_p xjcontent_v
+巡检异常：xjsingular_p xjsingular_v
+巡检超期：xjoverdue_p xjoverdue_v
+
+巡检要求控制值运算符
+ge:大于等于上限
+gt:大于上限
+le:小于等于下限
+lt:小于下限
+ba:区间
+
+异常上报问题来源
+ 1 巡回检查
+ 2 例行作业
+ 
+ 巡检 要求  异常处理：
+CZ_TASK_INSPECTION_REQUIRE表REMARKFOUR字段
+FINISHED 现场已处理
+UNFINISHED 现场未处理
+REPORTED 已上报

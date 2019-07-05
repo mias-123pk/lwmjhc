@@ -1,0 +1,229 @@
+<!doctype html>
+<html isbridge="true">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<title>巡回检查1</title>
+		<link rel="stylesheet" href="../../../pjs/seedsui/seedsui.min.css">
+	</head>
+
+	<body ontouchstart="">
+		<header id='header'>
+			<div class="titlebar reverse">
+				<a href="javascript:back()" class="button left"><i class="icon icon-arrowleft"></i></a>
+				<h1 class="text-center">巡回检查</h1>
+				<div class="right">
+					<a class="button" href="../../index.html"> <i class="icon icon-home"></i> </a>
+				</div>
+			</div>
+		</header>
+		<article style="background-color:white;">
+			<div class="calendar" id="calender_select_container">
+				<ul class="list noborder nobg">
+					<li style="padding:10px 0;">
+						<div class="justify arrowleft">
+							<i class="icon icon-arrowleft"></i>
+						</div>
+						<div class="justify-content calendar-title">
+							2016-2-15 周一
+						</div>
+						<div class="justify arrowright">
+							<i class="icon icon-arrowright"></i>
+						</div>
+					</li>
+				</ul>
+				<div class="calender_container">
+					<div class='day'>
+						<div class="week-day-line">
+							<div class="day-name">
+								日
+							</div>
+							<div class="day-name">
+								一
+							</div>
+							<div class="day-name">
+								二
+							</div>
+							<div class="day-name">
+								三
+							</div>
+							<div class="day-name">
+								四
+							</div>
+							<div class="day-name">
+								五
+							</div>
+							<div class="day-name">
+								六
+							</div>
+						</div>
+						<div class="week-day-line">
+							<div class="day-name">
+								日
+							</div>
+							<div class="day-name">
+								一
+							</div>
+							<div class="day-name">
+								二
+							</div>
+							<div class="day-name">
+								三
+							</div>
+							<div class="day-name">
+								四
+							</div>
+							<div class="day-name">
+								五
+							</div>
+							<div class="day-name">
+								六
+							</div>
+						</div>
+						<div class="week-day-line">
+							<div class="day-name">
+								日
+							</div>
+							<div class="day-name">
+								一
+							</div>
+							<div class="day-name">
+								二
+							</div>
+							<div class="day-name">
+								三
+							</div>
+							<div class="day-name">
+								四
+							</div>
+							<div class="day-name">
+								五
+							</div>
+							<div class="day-name">
+								六
+							</div>
+						</div>
+					</div>
+					<div class='date_container'>
+						<div class="month_container"></div>
+					</div>
+				</div>
+			</div>
+			<div style="margin:0px 0;">
+				&nbsp;
+			</div>
+		</article>
+
+		<article>
+			<ul class="tabbar animate-slide width-full" data-col="2" id="tabbar">
+				<li class="tab active">
+					<label class="tab-label">未完成</label>
+				</li>
+				<li class="tab">
+					<label class="tab-label">已完成</label>
+				</li>
+				<hr/>
+			</ul>
+			<div class="slider-container" id="carouselPage" style="height: 100%;">
+				<div class="slider-wrapper">
+					<div class="slider-slide" id="table1" style="height:800px">
+						<!-- 未完成表单-->
+						初始任务实例！
+					</div>
+					<div class="slider-slide" id="table2" style="height:800px">
+						<!-- 已完成表单-->
+						2222
+					</div>
+				</div>
+			</div>
+		</article>
+	</body>
+	<script src="../../../pjs/jquery.min.js"></script>
+	<script src="../../../pjs/seedsui/seedsui.min.js"></script>
+	<script src="../../../pjs/com_sqlite.js"></script>
+	<script src="../../../pjs/common.js"></script>
+	<script src="../../layer/layer.js"></script>
+	<!--功能js -->
+	<script src="../js/patrolinspection.js"></script>
+	<script>
+		var userName = '';
+		var logname = '';
+		var quaryDate = '';
+		$(function() {
+			select_initData(newDate);
+			//加载头部
+			initSlider();
+			initTabbar();
+			initDrag();
+		});
+
+		var tempWeekSelectObject = new DateSelect({
+				activeDate: new Date()
+			}),
+			tempDivId = "calender_select_container";
+		var tempCalenderObject = new Calender({
+			dateSelectObject: tempWeekSelectObject,
+			containerDivId: tempDivId,
+			onChange: function(date) {
+				quaryDate = com_formatDate(date);
+				select_initData(quaryDate);
+			}
+		});
+
+		function calendarExpand() {
+			tempCalenderObject.switchToMonth();
+		}
+
+		var today = '';
+		var slides = document.querySelectorAll("#carouselPage .slider-slide");
+		var carouselPage;
+
+		function initSlider() {
+			carouselPage = new Slider("#carouselPage", {
+				"onInit": function(e) {},
+				"onSlideChangeEnd": function(e) {
+					tabActive(e.index);
+				}
+			});
+		}
+
+		function initDrag() {
+			var drag1 = new Dragrefresh(carouselPage.slides[0], {
+				"minScrollTop": 1,
+				"onRefreshStart": function(e) {
+					setTimeout(function() {
+						e.refreshComplete();
+					}, 1000);
+				},
+				"onRefreshEnd": function(e) {
+					console.log("加载完成");
+				},
+				"onBottom": function(e) {
+					console.log("滚动到底部啦");
+					setTimeout(function() {
+						e.bottomRefreshEl.style.display = "none";
+					}, 2000);
+				}
+			});
+			var drag2 = new Dragrefresh(carouselPage.slides[1], {
+				"onRefresh": function(e) {
+					setTimeout(function() {
+						e.refreshComplete();
+					}, 1000);
+				},
+				"onRefreshEnd": function(e) {
+					console.log("加载完成");
+				},
+				"onBottom": function(e) {
+					console.log("滚动到底部啦");
+					setTimeout(function() {
+						e.bottomRefreshEl.style.display = "none";
+					}, 2000);
+				}
+			});
+		}
+	</script>
+
+</html>

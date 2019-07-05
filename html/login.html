@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html isbridge="true">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<title>登录</title>
+		<!-- Swiper框架的CSS -->
+		<link rel="stylesheet" href="../css/training.css">
+		<link rel="stylesheet" href="../pjs/seedsui/seedsui.min.css">
+		<link rel="stylesheet" href="layer/mobile/need/layer.css" />
+		<link rel="stylesheet" href="../css/mui.min.css">
+		
+	</head>
+
+	<body ontouchstart="">
+		<header id='head'>
+
+		</header>
+		<form class="body-box">
+			<div class="login-box" style="color:white">
+				<img src="../img/login/log_login.png" class="login-logo" />
+				<div class="input-box licon feature"  id="namelog">
+					<i class="icon icon-user-fill"></i>
+					<input type="text" id="username" value="苟列生">
+				</div>
+				<div class="input-box licon feature">
+					<i class="icon icon-lock2-fill"></i>
+					<!--<input type="password" id="password">-->
+					<input type="password" id="password" value="123456">
+				</div>
+				<p>
+					&nbsp;
+				</p>
+				<a class="button block btn-login" href="javascript:log_login()">登录</a>
+				<br />
+				<br />
+				<div class="login-cbo">
+					<div><label><input id="rememberMe" type="checkbox" class="input-login-cbo"/>
+						<span>记住用户名</span><label></div>
+					<!--<div><a href="#" onclick="datasync()" style="color:white">系統初始化</a> </div>-->
+				</div>
+			</div>
+		</form>
+		
+		<footer id="footer"></footer>
+	</body>
+	
+	<script src="../pjs/jquery.min.js"></script>
+		<script src="../pjs/mui.min.js"></script>
+		<script src="../pjs/com_sqlite.js"></script>
+		<script src="../pjs/common.js"></script>
+		
+		<!--页面功能JS-->
+		<script src="js/login.js"></script>
+		<script src="layer/layer.js"></script>
+		
+		<script src="../pjs/download.js"></script>
+		
+		<!--<script src="../pjs/text_sql.js"></script>-->
+</html>

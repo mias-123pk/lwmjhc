@@ -1,0 +1,212 @@
+﻿<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<title>净化厂</title>
+		<link rel="stylesheet" href="../pjs/seedsui/seedsui.min.css">
+		<link rel="stylesheet" href="layer/mobile/need/layer.css" />
+		<style>
+			.text-size {
+				font-size: 20px;
+			}
+			
+			.arrowbar .tab-label,
+			.menubar .tab-label {
+				display: block;
+				height: 25px;  
+				font-size: 15px;
+				line-height: 24px;
+			}
+			
+			.bg-1 {
+				background-color: #CD6090;
+			}
+			.bg-2 {
+				/*background-color: #53c6fd;*/
+				background-color: #cccccc;
+			}
+			.bg-3 {
+				/*background-color: #53c6fd;*/
+				background-color: #cccccc;
+			}
+		
+			.bg-4 {
+				/*background-color: #53c6fd;*/
+				background-color: #cccccc;
+			}
+			.bg-5 {
+				/*background-color: #53c6fd;*/
+				background-color: #002060;
+			}
+			.bg-6 {
+				/*background-color: #53c6fd;*/
+				background-color: #c0ff20;
+			}
+			.bg-7 {
+				/*background-color: #53c6fd;*/
+				background-color: #cccccc;
+			}
+			.bg-8 {
+				background-color: #008B8B;
+				/*background-color: #cccccc;*/
+			}
+			.bg-9 {
+				/*background-color: #53c6fd;*/
+				background-color: #cccccc;
+			}
+			table {
+				margin: auto
+			}
+			
+			table td,
+			table th {
+				text-align: center
+			}
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<div class="titlebar reverse">
+				<h1 class="text-center">生产物联网管理系统</h1>
+			</div>
+			<!--<a href="testOther.html?a=呵呵哒">测试</a>-->
+		</header>
+		<!--主体-->
+
+		<article>
+			<!--轮播-->
+			<div id="uname">
+			</div>
+			<img src="../img/login/banner.png" style="height: 200px;width: 100%;">
+			<ul class="grid metro" data-col="3">
+				<li style="width:33.333%">
+					<a class="bg-1" href="javascript:skipping('patrolinspection')">
+						<div class="sticker top left">
+							<span id="span_patrolinspection" style="font-size:18px"></span>
+						</div> <i class="icon icon-eye-fill"></i> <label class="nowrap">巡回检查</label>
+					</a>
+				</li>
+				<li style="width:33.333%">
+					<a class="bg-2" href="javascript:skipping('adhocassig')">
+						<div class="sticker top left">
+							<span id="span_maintaining" style="font-size:18px"></span>
+						</div> <i class="icon icon-medal-fill"></i> <label>属地监督</label>
+					</a>
+
+				</li>
+				<li style="width:33.333%">
+					<a class="bg-3" href="javascript:skipping('routine')">
+						<div class="sticker top left">
+							<span id="span_adhocassig" style="font-size:18px"></span>
+						</div> <i class="icon icon-contact-fill"></i> <label class="nowrap">例行作业</label> </a>
+				</li>
+
+			</ul>
+			<ul class="grid metro" data-col="3">
+				<li style="width:33.333%">
+					<a class="bg-4" href="javascript:skipping('provisional')">
+						<div class="sticker top left">
+							<span id="span_provisional" style="font-size:18px"></span>
+						</div> <i class="icon icon-notepad-fill"></i> <label>临时任务</label> </a>
+				</li>
+			<li style="width:33.333%">
+					<a class="bg-5" href="javascript:skipping('operationratio')">
+						<div class="sticker top left">
+							<span id="span_operationratio" style="font-size:18px"></span>
+						</div> <i class="icon icon-write-fill"></i> <label>我的待办</label> </a>
+				</li>
+				<li style="width:33.333%">
+					<a class="bg-6" href="javascript:skipping('problemReport')"> <i class="icon icon-chartpie-fill"></i> <label>问题上报</label> </a>
+				</li>
+				
+			</ul>
+			<ul class="grid metro" data-col="4">
+				<li style="width:33.333%">
+					<a class="bg-7" href="javascript:skipping('problemtracking')"> <i class="icon icon-gear-fill"></i> <label>问题跟踪</label> </a>
+				</li>
+				<li style="width:33.333%">
+					<a class="bg-8" href="javascript:skipping('device')"> <i class="icon icon-file-fill"></i> <label>设备信息</label> </a>
+				</li>
+				<li style="width:33.333%">
+					<a class="bg-9" href="javascript:skipping('supposed')"> <i class="icon icon-fileperson-fill"></i> <label class="nowrap">应知应会</label> </a>
+				</li>
+			</ul>
+			</div>
+		</article>
+		<footer id='footer'>
+			<ul class="menubar">
+				<li onclick="javascript:index()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-home"></i>
+					<label class="tab-label">首页</label>
+				</li>
+				<li onclick="javascript:Set_new()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-gear-fill"></i>
+					<label class="tab-label">系统设置</label>
+				</li>
+				<li onclick="javascript:user()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-fileperson-fill"></i>
+					<label class="tab-label">个人中心</label>
+				</li>
+			</ul>
+		</footer>
+	</body>
+	<script src="../pjs/jquery.min.js"></script>
+	<script src="../pjs/mui.min.js"></script>
+	<script src="../pjs/com_sqlite.js"></script>
+	<script src="../pjs/common.js"></script>
+	<script src="layer/layer.js"></script>
+	<script src="js/index.js"></script>
+	<script src="../pjs/seedsui/seedsui.min.js"></script>
+	
+	<script>
+		window.onload = function() {
+			var s1 = new Slider("#carousel1", {
+				"pagination": ".slider-pagination",
+				//可以前后无限滑动
+				"loop": true
+			});
+			var s2 = new Slider("#carousel2", {
+				"pagination": ".slider-pagination",
+				"slidesPerView": "3",
+				"loop": true
+			});
+		}
+		var dialog = new Dialog("#pop_custom", {
+			onClick: function(s) {
+				if(s.target.text == "关闭") {
+					s.hide();
+				} else if(s.target.text == "确定") {}
+			}
+		});
+		//right
+		$("#right").click(function() {
+			dialog.setPos("right");
+			dialog.show();
+		});
+
+		function index() {
+			jump('index.html')
+		}
+
+		function user() {
+			jump('user/user.html')
+		}
+
+		function Set_new() {
+			jump('setup.html');
+		}
+
+		/**
+		 *退出登录
+		 */
+		function logout() {
+			localStorage.clear();
+			jump('login.html');
+		}
+	</script>
+
+</html>

@@ -1,0 +1,55 @@
+﻿<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<title>设备大类信息1</title>
+				<link rel="stylesheet" href="../../../pjs/seedsui/seedsui.min.css">
+		<style>
+			
+			.grid.border li {
+				border-color: inherit;
+				border-style: solid;
+				border-width: 1px 1px 1px 1px;
+			}
+		</style>
+	</head>
+
+	<body ontouchstart="">
+		<header>
+			<div class="titlebar reverse">
+				<a href="../../index.html" class="button left"><i class="icon icon-arrowleft"></i></a>
+				<h1 class="text-center">设备大类信息</h1>
+				<div class="right">
+					<a class="button" href="../../index.html"> <i class="icon icon-home"></i> </a>
+				</div>
+			</div>
+		</header>
+		<article id="taskoves">
+			
+		</article>
+		<div style="height: 70px;"></div>
+		
+			<!--页面底部-->
+		<footer id='footer'>
+			<ul class="menubar">
+				<li onclick="javascript:readData()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-hook"></i>
+					<label class="tab-label">设备扫描</label>
+				</li>
+			</ul>
+		</footer>
+		<script src="../../../pjs/jquery.min.js"></script>
+		<script src="../../../pjs/seedsui.min.js"></script>
+		<script src="../../../pjs/mui.min.js"></script>
+		<script src="../../../pjs/com_sqlite.js"></script>
+		<script src="../../../pjs/common.js"></script>
+		<script src="../../layer/layer.js"></script>
+		<script type="text/javascript" src="../../../pjs/nfc.js" ></script>
+		<!-- 功能js-->
+		<script src="../js/device.js"></script>
+		
+	</body>
+</html>

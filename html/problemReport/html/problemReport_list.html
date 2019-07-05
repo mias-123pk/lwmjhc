@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<title>移动端手动上报</title>
+		<link rel="stylesheet" href="../../../pjs/seedsui/seedsui.min.css">
+	</head>
+
+	<body ontouchstart="">
+		<header>
+			<div class="titlebar reverse">
+				<a href="javascript:backs()" class="button left"><i class="icon icon-arrowleft"></i></a>
+				<h1 class="text-center">移动端手动上报</h1>
+				<div class="right">
+					<a class="button" href="problemReport_detail.html"> <i class="icon icon-rdoadd"></i> </a>
+				</div>
+			</div>
+		</header>
+
+		<article>
+			<table>
+				<thead>
+					<tr>
+						<th class='text-center' width="15%">序号</th>
+						<th width="70%">问题描述</th>
+						<th class='text-center'>操作</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyContent">
+
+				</tbody>
+			</table>
+		</article>
+		<script src="../../../pjs/jquery.min.js"></script>
+		<script src="../../../pjs/seedsui.min.js"></script>
+		<script src="../../../pjs/mui.min.js"></script>
+		<script src="../../../pjs/com_sqlite.js"></script>
+		<script src="../../../pjs/common.js"></script>
+		<script src="../js/problemReport_list.js"></script>
+		<script>
+			//返回按键触发
+			document.addEventListener("backmonitor", function() {
+				backs();
+			}, false);
+			//返回上一级方法
+			function backs() {
+				window.open("../../index.html");
+			}
+		</script>
+	</body>
+
+</html>

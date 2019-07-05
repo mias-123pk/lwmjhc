@@ -1,0 +1,125 @@
+<!doctype html>
+<html isbridge="true">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<title>问题闭环_问题评估</title>
+		<link rel="stylesheet" href="../../../pjs/seedsui/seedsui.min.css">
+	</head>
+
+	<body ontouchstart="">
+		<header>
+			<div class="titlebar reverse">
+				<a href="javascript:back()" class="button left" ><i class="icon icon-arrowleft"></i></a>
+				<h1 class="text-center" id="H1">问题评估</h1>
+				<div class="right" id="op_header">
+					<a class="button" href="../../index.html"> <i class="icon icon-home"></i> </a>
+				</div>
+			</div>
+		</header>
+
+		<article>
+			<details open>
+				<summary class="sliver">
+					问题信息
+				</summary>
+				<ul class="list" id='Problem_information'>
+					<li><div class="justify-content">
+				<small>上报人：冯志伟,查先德</small>
+				<small> 属地单位：净化工段</small>
+				<small>问题区域：主题装置一列</small>
+				<small> 所属专业：仪表</small>
+				<small>设备位号：121-PG-014</small>
+				<small>问题类别：体系审核</small>
+				<small>问题描述：250-GT-115分析化验</small>
+				<table><tr>
+					<td>处理人</td><td>处理节点</td><td>操作</td><td>处理说明</td><td>时间</td>
+				</tr>
+				<tr><td>XXX</td><td>问题上报</td><td>上报</td><td>111</td><td>2019-12-14</td></tr></table>
+				</div></li>
+				</ul>
+			</details>
+			<details open>
+				<summary class="sliver">
+					操作信息
+				</summary>
+				<table>
+					<tr id="xkz">
+						<td>事件/隐患标记:</td><td>
+						<select id="Handle_person" style="width:100%;height:100%">
+								<option value="">其他</option>
+								<option value="">事故事件</option>
+								<option value="">隐患事件</option>
+						</select></td>
+					</tr>
+					<tr id="xkz">
+						<td>整改日期:</td><td>
+						<select id="Handle_person" style="width:100%;height:100%">
+								<option value="">指定日期</option>
+								<option value="">大修时整改</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td>指定日期:</td><td>
+						<input type="date" id="RECTIFICATIONPERIOD">
+						</td>
+					</tr>
+					<tr id="scaff">
+						<td colspan="2"><a href="#" onclick="javascript:scaff()">脚手架搭拆申请表</a></td>
+					</tr>
+					<tr id="equip">
+						<td colspan="2"><a href="#"  onclick="javascript:equip()">防腐(保温)申请表</a></td>
+					</tr>
+					<tr id="china">
+						<td colspan="2">处理说明</td>
+					</tr>
+					<tr id="china">
+						<td colspan="2">						<textarea style="width:90%" id="RECTIFICATIONMEASURES"></textarea></td>
+					</tr>
+				</table>
+			</details>
+		</article>
+		<br /><br /><br />
+		<!--页面底部-->
+		<footer id='footer'>
+			<ul class="menubar">
+				<li onclick="javascript:work()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-news"></i>
+					<label class="tab-label">回退</label>
+				</li>
+				<li onclick="javascript:consent()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-hook"></i>
+					<label class="tab-label">闭环处理</label>
+				</li>
+				<li onclick="javascript:termination()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-close"></i>
+					<label class="tab-label">作业安排</label>
+				</li>
+				<li onclick="javascript:termination()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-close"></i>
+					<label class="tab-label">外部协调</label>
+				</li>
+			</ul>
+		</footer>
+		<script src="../../../plugin/jquery/jquery.min.js"></script>
+		<script src="../../../plugin/seedsui/seedsui.min.js"></script>
+		<!-- layer-->
+		<script src="../../layer/layer.js"></script>
+		<!-- 通用js-->
+		<script src="../../js/common.js"></script>
+			<script src="../../js/com_sqlite.js"></script>
+		<script src="../../js/com_file.js"></script>
+		<!-- 流程基本功能js-->
+		<script src="../ajs/manageCommon.js"></script>
+		<!-- 问题评估功能js
+		<script src="issue_auditpg.js"></script>
+		-->
+		<script>
+			//返回按键触发
+			document.addEventListener("backmonitor", function() {
+				back();
+			}, false);
+		</script>
+	</body>
+</html>

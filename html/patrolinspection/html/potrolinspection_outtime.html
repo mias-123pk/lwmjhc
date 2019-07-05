@@ -1,0 +1,92 @@
+<!-- HTML5文件 -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<title>巡回检查_超期未完成</title>
+		<link rel="stylesheet" href="../../../css/seedsui.min.css">
+		<script type="text/javascript" src="../../js/jquery.1.7.2.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.multiselect.js"></script>
+	</head>
+	<body>
+		<header>
+			<div class="titlebar reverse">
+				<a href="javascript:back()" class="button left" ><i class="icon icon-arrowleft"></i></a>
+				<h1 class="text-center">任务超期</h1>
+				<div class="right">
+					<a class="button" href="../index.html"> <i class="icon icon-home"></i> </a>
+				</div>
+			</div>
+		</header>
+		<article>
+			
+			<hr/><hr/>
+			<div align="center"><font style = "color:black;font-family:'Times New Roman';" id = 'title'>任务名称</font></div>
+			<hr/><br/>
+			<font style = "color:red;font-family:'Times New Roman'">&nbsp;该任务已超过规定完成期限!</font>
+			<br/><hr/><br/>
+			<font style = "color:black;font-family:'Times New Roman'">&nbsp;请输入超期未完成原因：</font>
+			<div class="row padding8">
+					<div class="input-box" style="width:100%">
+						<textarea class="noborder" name="personal" style="width:100%" id="textarea1"></textarea>
+					</div>
+			</div>
+		</article>
+		<br />
+		<br /><br /><br /><br /><br />
+		<footer>
+			<ul class="menubar">
+				<li onclick="cameraAndReturn('still','cameraAndReturnCallback')" class="tab active" data-role="tab" href="#index_article" data-toggle="article">
+					<i class="icon icon-pic"></i>
+					<label class="tab-label">拍照</label>
+				</li>
+				<li onclick="javascript:lockphoto()" class="tab" data-role="tab" href="#ui_article" data-toggle="article">
+					<i class="icon icon-eye"></i>
+					<label class="tab-label">查看照片</label>
+				</li>
+				<li onclick="javascript:save()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-rdodisk"></i>
+					<label class="tab-label">保存</label>
+				</li>
+				<li onclick="javascript:nextstep()"class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-arrowsent"></i>
+					<label class="tab-label">完成</label>
+				</li>
+			</ul>
+		</footer>
+		<script src="../../plugin/jquery/jquery.min.js"></script>
+		<script src="../../plugin/seedsui/seedsui.min.js"></script>
+		<!--Exmobi能力-->
+		<script src="../../plugin/exmobi/exmobi.js"></script>
+		<script src="../../js/potrolinspection_outtime.js"></script>
+		<script src="../../js/common.js"></script>
+	<script>
+		//返回按键触发
+		document.addEventListener("backmonitor",function(){
+			back();
+		},false);
+	</script>
+		<script type="text/javascript">
+			function nextstep() {
+				window.open("patrolinspection.html");
+			}
+		</script>
+		<script>
+			function getQueryString(name) {
+				var searchurl = decodeURIComponent(window.location.search);
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+				var r = searchurl.substr(1).match(reg);
+				if (r != null)
+					return unescape(r[2]);
+				return null;
+			}
+			function back(){
+				window.open("patrolinspection.html");
+			}
+
+		</script>
+	</body>
+</html>

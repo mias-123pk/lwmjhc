@@ -1,0 +1,71 @@
+<!doctype html>
+<html isbridge="true">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<title>流程审批</title>
+		<link rel="stylesheet" href="../../pjs/seedsui/seedsui.min.css">
+	</head>
+
+	<body ontouchstart="">
+		<header>
+			<div class="titlebar reverse">
+				<a href="javascript:backs()" class="button left" ><i class="icon icon-arrowleft"></i></a>
+				<h1 class="text-center">流程审批</h1>
+				<div class="right">
+					<a class="button" href="../index.html"> <i class="icon icon-home"></i> </a>
+				</div>
+			</div>
+		</header>
+
+		<article>
+			<table>
+				<tbody id='operationratio'>
+					<tr>
+						<td>序号</td><td>任务名</td><td>流程类型</td><td>发起者</td><td>到达时间</td>
+					</tr>
+					<tr>
+						<td>1</td><td>问题上报</td><td>1</td><td>1</td><td>1</td>
+					</tr>
+					<tr>
+						<td>2</td><td>问题评估</td><td>1</td><td>1</td><td>1</td>
+					</tr>
+					<tr>
+						<td>3</td><td>技术干部评估</td><td>1</td><td>1</td><td>1</td>
+					</tr>
+					<tr>
+						<td>4</td><td>作业指派</td><td>1</td><td>1</td><td>1</td>
+					</tr>
+					<tr>
+						<td>6</td><td>接收作业</td><td>1</td><td>1</td><td>1</td>
+					</tr>
+					<tr>
+						<td>7</td><td>完成作业</td><td>1</td><td>1</td><td>1</td>
+					</tr>
+					<tr>
+						<td>8</td><td>作业验收</td><td>1</td><td>1</td><td>1</td>
+					</tr>
+				</tbody>
+			</table>
+		</article>
+		<script src="../../plugin/jquery/jquery.min.js"></script>
+		<script src="../../plugin/seedsui/seedsui.min.js"></script>
+		<!-- layer-->
+		<script src="../layer/layer.js"></script>
+		<!-- 通用js-->
+		<script src="../js/common.js"></script>
+		<script src="../js/com_sqlite.js"></script>
+		<script src="../js/com_file.js"></script>
+		<!-- 流程基本功能js
+		<script src="ajs/manageCommon.js"></script>-->
+		<!-- 功能js
+		<script src="operationratio.js"></script>-->
+		<script>
+			//返回按键触发
+			document.addEventListener("backmonitor", function() {
+				backs();
+			}, false);
+		</script>
+	</body>
+</html>

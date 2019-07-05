@@ -1,0 +1,136 @@
+<!doctype html>
+<html isbridge="true">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<title>设备信息</title>
+		<link rel="stylesheet" href="../../../css/mui.min.css">
+		<link rel="stylesheet" href="../../../css/hb_common.css">
+		<link rel="stylesheet" href="../../../pjs/seedsui/seedsui.min.css">
+		<style>
+			.mui-content>.mui-table-view:first-child {
+				margin-top: 0px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<div class="titlebar reverse">
+				<a href="javascript:back()" class="button left"><i class="icon icon-arrowleft"></i></a>
+				<h1 class="text-center" id="title_deviceName"></h1>
+				<div class="right">
+					<a class="button" href="javascript:jump('../../index.html')"> <i class="icon icon-home"></i> </a>
+				</div>
+			</div>
+		</header>
+		<article>
+	<details open>
+				<summary class="sliver">
+					基本信息
+				</summary>
+				<ul class="list" id="deviceExtend"></ul>
+			</details>
+			
+			<details>
+				<summary class="sliver">
+					详细参数
+				</summary>
+				<ul class="list" id="deviceExtendInfo"></ul>
+			</details>
+			<details >
+				<summary class="sliver">
+					设备图片
+				</summary>
+				<div class="mui-content" style="background-color:#fff">
+					<ul class="mui-table-view mui-grid-view" id="photo">
+						<!--<ul class="mui-table-view mui-grid-view" id="seq_photo">-->
+					</ul>
+				</div>
+			</details>
+
+			<details >
+				<summary class="sliver">
+					设备相关文档
+				</summary>
+				<ul class="list" id="deviceFile">
+
+				</ul>
+			</details>
+
+			<details >
+				<summary class="sliver">
+					设备检维修记录
+				</summary>
+				<ul class="list" id="deviceTask">
+
+				</ul>
+			</details>
+			<details >
+				<summary class="sliver">
+					备品备件
+				</summary>
+				<ul class="list" id="sparepart">
+
+				</ul>
+			</details>
+		</article>
+		<!--<details open>
+			<summary class="sliver">
+				照片
+			</summary>
+			<div class="mui-content" style="background-color:#fff">
+				<ul class="mui-table-view mui-grid-view" id="photo">
+
+				</ul>
+			</div>
+		</details>-->
+		</article>
+		<details >
+			<summary class="sliver">
+				视屏
+			</summary>
+			<ul class="list" id="void">
+
+			</ul>
+		</details>
+		</article>
+		<div style="height: 70px;"></div>
+		<footer>
+			<ul class="menubar">
+				<li onclick="javascript:getImages()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-pic"></i>
+					<label class="tab-label">拍照片</label>
+				</li>
+				<li onclick="javascript:getVideos()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-video"></i>
+					<label class="tab-label">拍视频</label>
+				</li>
+				<li onclick="javascript:updateEQ()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-write-fill"></i>
+					<label class="tab-label">修改信息</label>
+				</li>
+			</ul>
+		</footer>
+		<script src="../../../pjs/jquery.min.js"></script>
+		<script src="../../../pjs/seedsui/seedsui.min.js"></script>
+		<script src="../../../pjs/mui.min.js"></script>
+		<script src="../../../pjs/com_sqlite.js"></script>
+		<script src="../../../pjs/common.js"></script>
+		<!-- 功能js-->
+		<script src="../js/equipmentManage.js"></script>
+		<script type="text/javascript" src="../../../pjs/common_photo.js"></script>
+		<script src="../../layer/layer.js"></script>
+		<script src="../js/device_details.js"></script>
+
+		<script>
+			//返回按键触发
+			document.addEventListener("backmonitor", function() {
+				back();
+			}, false);
+		</script>
+	</body>
+
+</html>

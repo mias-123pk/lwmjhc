@@ -1,0 +1,648 @@
+{
+    "@platforms" : [ "android", "iPhone", "iPad" ],
+    "id" : "H54A0E254", /*应用的标识，创建应用时自动生成，勿手动修改*/
+    "name" : "净化厂", /*应用名称，程序桌面图标名称*/
+    "version" : {
+        "name" : "1.15", /*应用版本名称*/
+        "code" : ""
+    },
+    "description" : "净化厂APP", /*应用描述信息*/
+    "icons" : {
+        "72" : "icon.png"
+    },
+    "launch_path" : "html/initialize.html", /*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+    "developer" : {
+        "name" : "", /*开发者名称*/
+        "email" : "", /*开发者邮箱地址*/
+        "url" : "" /*开发者个人主页地址*/
+    },
+    "permissions" : {
+        "Cache" : {
+            "description" : "管理应用缓存"
+        },
+        "Console" : {
+            "description" : "跟踪调试输出日志"
+        },
+        "Contacts" : {
+            "description" : "访问系统联系人信息"
+        },
+        "Events" : {
+            "description" : "应用扩展事件"
+        },
+        "Maps" : {
+            "description" : "管理地图插件"
+        },
+        "Speech" : {}
+    },
+    "plus" : {
+        "splashscreen" : {
+            "autoclose" : true, /*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
+            "waiting" : true,
+            "delay" : "0" /*是否在程序启动界面显示等待雪花，true表示显示，false表示不显示。*/
+        },
+        "popGesture" : "close", /*设置应用默认侧滑返回关闭Webview窗口，"none"为无侧滑返回功能，"hide"为侧滑隐藏Webview窗口。参考http://ask.dcloud.net.cn/article/102*/
+        "runmode" : "normal", /*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
+        "signature" : "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==", /*可选，保留给应用签名，暂不使用*/
+        "distribute" : {
+            "apple" : {
+                "appid" : "", /*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
+                "mobileprovision" : "", /*iOS应用打包配置文件*/
+                "password" : "", /*iOS应用打包个人证书导入密码*/
+                "p12" : "", /*iOS应用打包个人证书，打包配置文件关联的个人证书*/
+                "devices" : "universal", /*iOS应用支持的设备类型，可取值iphone/ipad/universal*/
+                "frameworks" : [] /*调用Native.js调用原生Objective-c API需要引用的FrameWork，如需调用GameCenter，则添加"GameKit.framework"*/
+            },
+            "google" : {
+                "packagename" : "", /*Android应用包名，如io.dcloud.HelloH5*/
+                "keystore" : "", /*Android应用打包使用的密钥库文件*/
+                "password" : "", /*Android应用打包使用密钥库中证书的密码*/
+                "aliasname" : "", /*Android应用打包使用密钥库中证书的别名*/
+                "permissions" : [
+                    "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
+                    "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+                    "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+                    "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
+                    "<uses-permission  android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CAMERA\"/>",
+                    "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
+                    "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+                    "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
+                    "<uses-permission android:name=\"android.permission.INTERNET\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+                    "<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
+                    "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+                    "<uses-feature android:name=\"android.hardware.camera\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
+                ]
+            },
+            /*使用Native.js调用原生安卓API需要使用到的系统权限*/
+            "orientation" : [ "portrait-primary" ], /*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
+            "icons" : {
+                "ios" : {
+                    "prerendered" : true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
+
+                    /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
+                    "iphone" : {
+                        "normal" : "", /*iPhone3/3GS程序图标，分辨率：57x57*/
+                        "retina" : "", /*iPhone4程序图标，分辨率：114x114*/
+
+                        /*iPhone4S/5/6程序图标，分辨率：120x120*//*iPhone6 Plus程序图标，分辨率：180x180*/
+                        "spotlight-normal" : "", /*iPhone3/3GS Spotlight搜索程序图标，分辨率：29x29*/
+                        "spotlight-retina" : "", /*iPhone4 Spotlight搜索程序图标，分辨率：58x58*/
+
+                        /*iPhone4S/5/6 Spotlight搜索程序图标，分辨率：80x80*/
+                        "settings-normal" : "", /*iPhone4设置页面程序图标，分辨率：29x29*/
+
+                        /*iPhone4S/5/6设置页面程序图标，分辨率：58x58*/
+                        "app@2x" : "unpackage/res/icons/120x120.png",
+                        "app@3x" : "unpackage/res/icons/180x180.png",
+                        "settings@3x" : "unpackage/res/icons/87x87.png",
+                        "settings@2x" : "unpackage/res/icons/58x58.png",
+                        "spotlight@2x" : "unpackage/res/icons/80x80.png",
+                        "spotlight@3x" : "unpackage/res/icons/120x120.png",
+                        "notification@3x" : "unpackage/res/icons/60x60.png",
+                        "notification@2x" : "unpackage/res/icons/40x40.png" /*iPhone6Plus设置页面程序图标，分辨率：87x87*/
+                    },
+                    "ipad" : {
+                        "normal" : "", /*iPad普通屏幕程序图标，分辨率：72x72*/
+                        "retina" : "", /*iPad高分屏程序图标，分辨率：144x144*/
+
+                        /*iPad iOS7程序图标，分辨率：76x76*//*iPad iOS7高分屏程序图标，分辨率：152x152*/
+                        "spotlight-normal" : "", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
+                        "spotlight-retina" : "", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
+
+                        /*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*//*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*//*iPad设置页面程序图标，分辨率：29x29*/
+                        "app" : "unpackage/res/icons/76x76.png",
+                        "app@2x" : "unpackage/res/icons/152x152.png",
+                        "settings" : "unpackage/res/icons/29x29.png",
+                        "proapp@2x" : "unpackage/res/icons/167x167.png",
+                        "spotlight" : "unpackage/res/icons/40x40.png",
+                        "settings@2x" : "unpackage/res/icons/58x58.png",
+                        "spotlight@2x" : "unpackage/res/icons/80x80.png",
+                        "notification" : "unpackage/res/icons/20x20.png",
+                        "notification@2x" : "unpackage/res/icons/40x40.png" /*iPad高分屏设置页面程序图标，分辨率：58x58*/
+                    },
+                    "appstore" : "unpackage/res/icons/1024x1024.png"
+                },
+                "android" : {
+                    "mdpi" : "unpackage/res/icons/48x48.png", /*普通屏程序图标，分辨率：48x48*/
+                    "ldpi" : "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
+                    "hdpi" : "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
+                    "xhdpi" : "unpackage/res/icons/96x96.png", /*720P高分屏程序图标，分辨率：96x96*/
+                    "xxhdpi" : "unpackage/res/icons/144x144.png",
+                    "xxxhdpi" : "unpackage/res/icons/192x192.png" /*1080P 高分屏程序图标，分辨率：144x144*/
+                }
+            },
+            "splashscreen" : {
+                "ios" : {
+                    "iphone" : {
+                        "default" : "",
+                        "iphonex" : "E:/Work/物联网净化厂/APP打包资源/a3.png",
+                        "retina47" : "E:/Work/物联网净化厂/APP打包资源/a3.png",
+                        "iphonexl" : "E:/Work/物联网净化厂/APP打包资源/a3.png",
+                        "retina35" : "E:/Work/物联网净化厂/APP打包资源/a3.png",
+                        "retina40" : "E:/Work/物联网净化厂/APP打包资源/a3.png",
+                        "retina55" : "E:/Work/物联网净化厂/APP打包资源/a3.png",
+                        "retina55l" : "E:/Work/物联网净化厂/APP打包资源/a3.png" /*5.5 英寸设备(iPhone6 Plus)横屏启动图片，分辨率：2208x1242*/
+                    },
+                    "ipad" : {
+                        "portrait" : "E:/Work/物联网净化厂/APP打包资源/a3.png", /*iPad竖屏启动图片，分辨率：768x1004*/
+
+                        /*iPad高分屏竖屏图片，分辨率：1536x2008*//*iPad横屏启动图片，分辨率：1024x748*//*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+                        "portrait7" : "E:/Work/物联网净化厂/APP打包资源/a3.png", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+
+                        /*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+                        "landscape7" : "E:/Work/物联网净化厂/APP打包资源/a3.png",
+                        "landscape" : "E:/Work/物联网净化厂/APP打包资源/a3.png",
+                        "portrait-retina" : "E:/Work/物联网净化厂/APP打包资源/a3.png",
+                        "portrait-retina7" : "E:/Work/物联网净化厂/APP打包资源/a3.png",
+                        "landscape-retina" : "E:/Work/物联网净化厂/APP打包资源/a3.png",
+                        "landscape-retina7" : "E:/Work/物联网净化厂/APP打包资源/a3.png" /*iPad iOS7高分屏横屏启动图片，分辨率：2048x1536*/
+                    }
+                },
+                "android" : {
+                    "mdpi" : "", /*普通屏启动图片，分辨率：240x282*/
+                    "ldpi" : "",
+                    "hdpi" : "E:/Work/物联网净化厂/APP打包资源/a3.png",
+                    "xhdpi" : "E:/Work/物联网净化厂/APP打包资源/a3.png",
+                    "xxhdpi" : "E:/Work/物联网净化厂/APP打包资源/a3.png" /*1080P高分屏启动图片，分辨率：1080x1882*/
+                }
+            },
+            "plugins" : {
+                "speech" : {
+                    "ifly" : {}
+                }
+            }
+        },
+        "adid" : "124220260411"
+    },
+    "dependencies" : {
+        "pages" : {
+            "index.html" : {
+                "href" : "index.html",
+                "priority" : 0
+            },
+            "html/index.html" : {
+                "resources" : [],
+                "refer" : [
+                    "html/patrolinspection/html/patrolinspection.html",
+                    "html/login.html",
+                    "html/suppose/html/supposed.html",
+                    "html/patrolinspection/html/patrolinspection_port.html",
+                    "html/routine/html/routine.html",
+                    "html/device/html/device-entry.html",
+                    "html/territorial/html/territorialsupervision.html",
+                    "html/provisional/html/provisional.html",
+                    "html/operationratio/operationratio.html",
+                    "html/testCabinet/html/testCabinet.html",
+                    "html/problemReport/html/problemReport_list.html",
+                    "html/problemtracking/html/problemtracking_list.html",
+                    "html/issued/html/issued.html",
+                    "html/suppose/html/supposedobjective.html",
+                    "html/device/index.html",
+                    "html/device/html/offcanvas.html",
+                    "html/routine/html/routine_inspect.html",
+                    "html/setup.html",
+                    "html/device/html/supposed.html",
+                    "html/device/html/device.html",
+                    "html/device/html/device-list.html",
+                    "html/user/user.html",
+                    "html/iot_process/html/report.html",
+                    "html/iot_process/html/pending-problem.html"
+                ],
+                "priority" : 0
+            },
+            "html/login.html" : {
+                "resources" : [ "pjs/download.js", "pjs/com_sqlite.js", "pjs/common.js" ],
+                "refer" : [ "html/index.html", "html/index2.html" ],
+                "priority" : 0
+            },
+            "html/suppose/html/supposed.html" : {
+                "resources" : [],
+                "refer" : [ "html/index.html", "html/suppose/html/supposedobjective.html" ],
+                "priority" : 0
+            },
+            "html/patrolinspection/html/patrolinspection.html" : {
+                "resources" : [],
+                "refer" : [
+                    "html/index.html",
+                    "html/patrolinspection/html/patrolinspection_port.html",
+                    "html/patrolinspection/html/accordion.html"
+                ],
+                "priority" : 0
+            },
+            "html/patrolinspection/html/patrolinspection_port.html" : {
+                "resources" : [],
+                "refer" : [
+                    "html/patrolinspection/html/patrolinspection.html",
+                    "html/index.html",
+                    "html/patrolinspection/html/patrolinspection_project.html",
+                    "html/patrolinspection/html/patrolinspection_termination.html"
+                ],
+                "priority" : 0
+            },
+            "html/device/html/device-entry.html" : {
+                "resources" : [],
+                "refer" : [ "html/index.html" ],
+                "priority" : 0
+            },
+            "html/suppose/html/supposedobjective.html" : {
+                "resources" : [],
+                "refer" : [ "html/index.html", "html/suppose/html/supposed.html" ],
+                "priority" : 0
+            },
+            "html/patrolinspection/html/patrolinspection_project.html" : {
+                "resources" : [],
+                "refer" : [
+                    "html/patrolinspection/html/patrolinspection_port.html",
+                    "html/index.html",
+                    "html/patrolinspection/html/patrolinspection1_inspection1.html",
+                    "html/patrolinspection/html/patrolinspection_termination.html"
+                ],
+                "priority" : 0
+            },
+            "html/patrolinspection/html/patrolinspection1_inspection1.html" : {
+                "resources" : [],
+                "refer" : [
+                    "html/patrolinspection/html/patrolinspection_project.html",
+                    "html/index.html"
+                ],
+                "priority" : 0
+            },
+            "html/territorial/html/territorialsupervision.html" : {
+                "resources" : [],
+                "refer" : [ "html/index.html" ],
+                "priority" : 0
+            },
+            "html/routine/html/routine.html" : {
+                "resources" : [],
+                "refer" : [ "html/index.html" ],
+                "priority" : 0
+            },
+            "html/provisional/html/provisional.html" : {
+                "resources" : [],
+                "refer" : [ "html/index.html" ],
+                "priority" : 0
+            },
+            "html/operationratio/operationratio.html" : {
+                "resources" : [],
+                "refer" : [ "html/index.html" ],
+                "priority" : 0
+            },
+            "html/testCabinet/html/testCabinet.html" : {
+                "resources" : [],
+                "refer" : [ "html/index.html" ],
+                "priority" : 0
+            },
+            "html/patrolinspection/html/patrolinspection_termination.html" : {
+                "resources" : [],
+                "refer" : [
+                    "html/index.html",
+                    "html/patrolinspection/html/patrolinspection_port.html",
+                    "html/patrolinspection/html/patrolinspection_project.html"
+                ],
+                "priority" : 0
+            },
+            "html/problemReport/html/problemReport_list.html" : {
+                "resources" : [],
+                "refer" : [
+                    "html/problemReport/html/problemReport_detail.html",
+                    "html/index.html"
+                ],
+                "priority" : 0
+            },
+            "html/problemReport/html/problemReport_detail.html" : {
+                "resources" : [],
+                "refer" : [
+                    "html/index.html",
+                    "html/problemReport/html/problemReport_list.html",
+                    "html/patrolinspection/html/patrolinspection1_inspection2.html"
+                ],
+                "priority" : 0
+            },
+            "html/problemtracking/html/problemtracking_list.html" : {
+                "resources" : [],
+                "refer" : [ "html/index.html" ],
+                "priority" : 0
+            },
+            "html/issued/html/issued.html" : {
+                "resources" : [],
+                "refer" : [ "html/index.html" ],
+                "priority" : 0
+            },
+            "html/device/html/offcanvas.html" : {
+                "resources" : [],
+                "refer" : [ "html/index.html" ],
+                "priority" : 0
+            },
+            "html/setup.html" : {
+                "resources" : [],
+                "refer" : [ "html/index.html", "html/user/user.html" ],
+                "priority" : 0
+            },
+            "html/device/html/supposed.html" : {
+                "resources" : [],
+                "refer" : [ "html/index.html" ],
+                "priority" : 0
+            },
+            "html/device/html/device.html" : {
+                "resources" : [],
+                "refer" : [
+                    "html/device/html/device-list.html",
+                    "html/index.html",
+                    "html/device/html/device_details.html"
+                ],
+                "priority" : 0
+            },
+            "html/device/html/device-list.html" : {
+                "resources" : [],
+                "refer" : [
+                    "html/device/html/device.html",
+                    "html/device/html/device_details.html",
+                    "html/index.html"
+                ],
+                "priority" : 0
+            },
+            "html/device/html/device_details.html" : {
+                "resources" : [],
+                "refer" : [ "html/index.html", "html/device/html/device-list.html" ],
+                "priority" : 0
+            },
+            "html/patrolinspection/html/accordion.html" : {
+                "resources" : [],
+                "refer" : [
+                    "html/patrolinspection/html/patrolinspection.html",
+                    "html/patrolinspection/html/patrolinspection1_inspection2.html"
+                ],
+                "priority" : 0
+            },
+            "html/patrolinspection/html/patrolinspection1_inspection2.html" : {
+                "resources" : [ "html/patrolinspection/js/patrolinspection1_inspection2.js" ],
+                "refer" : [
+                    "html/index.html",
+                    "html/patrolinspection/html/accordion.html",
+                    "html/problemReport/html/problemReport_detail.html"
+                ],
+                "priority" : 0
+            },
+            "html/user/user.html" : {
+                "resources" : [],
+                "refer" : [ "html/index.html", "html/setup.html", "html/login.html" ],
+                "priority" : 0
+            },
+            "html/initialize.html" : {
+                "resources" : [
+                    "js/jquery.touchSlider.js",
+                    "pjs/com_sqlite.js",
+                    "js/jquery.event.drag.js",
+                    "img/bak.png",
+                    "pjs/common.js",
+                    "js/jquery.js"
+                ],
+                "refer" : [ "html/login.html" ],
+                "priority" : 0
+            },
+            "html/iot_process/html/report.html" : {
+                "resources" : [
+                    "html/iot_process/jsPackage/layui-v2.4.2/css/modules/layer/default/layer.css",
+                    "html/iot_process/jsPackage/layui-v2.4.2/css/layui.css",
+                    "html/iot_process/jsPackage/layui-v2.4.2/font/iconfont.woff",
+                    "html/iot_process/jsPackage/layui-v2.4.2/font/iconfont.ttf",
+                    "html/iot_process/jsPackage/layui-v2.4.2/font/iconfont.woff2",
+                    "html/iot_process/jsPackage/layui-v2.4.2/layui.js"
+                ],
+                "refer" : [ "html/index.html" ],
+                "priority" : 0
+            },
+            "html/iot_process/html/pending-problem.html" : {
+                "resources" : [],
+                "refer" : [ "html/index.html", "html/iot_process/html/estimate.html" ],
+                "priority" : 0
+            }
+        },
+        "idle" : {
+            "resources" : [
+                "html/operationratio/bissuetaskallot/issue_taskallot.js",
+                "js/mui.dtpicker.js",
+                "img/login1/patternutil.png",
+                "html/provisional/js/provisional.js",
+                "html/device/js/Materials_Info.js",
+                "html/operationratio/ajs/photo_void.js",
+                "html/operationratio/pissueassess/issue_assess_taskdispose.html",
+                "html/routine/js/routine_inspection.js",
+                "html/operationratio/bissuetaskallot/issue_taskallot_consent.html",
+                "js/mui.previewimage.js",
+                "img/login/log_login.png",
+                "html/device/specification",
+                "html/operationratio/purchasebmld/purchase_dept_leader.js",
+                "css/training.css",
+                "html/suppose/specification",
+                "js/mui.view.js",
+                "html/operationratio/purchasebmld/purchase_dept_leader.html",
+                "html/patrolinspection/js/potrolinspection_outtime.js",
+                "html/layer/skin/default/icon-ext.png",
+                "fonts/mui.ttf",
+                "html/operationratio/pissueassess/issue_assess_goodsadd.js",
+                "html/testCabinet/js/testCabinet_port.js",
+                "js/mui.lazyload.js",
+                "html/operationratio/bissuetaskallot/Anticorrosive.html",
+                "js/95516.js",
+                "html/suppose/js/supposed.js",
+                "pjs/jquery.min.js",
+                "html/operationratio/pissueassess/issue_assess_consent.js",
+                "js/update.js",
+                "js/feedback.js",
+                "html/device/html/Materials_Info.html",
+                "html/operationratio/dissueoperationratio/goodsapply.js",
+                "html/routine/js/routine.js",
+                "html/operationratio/pissueassess/issue_assess_push.js",
+                "html/operationratio/manage.html",
+                "html/layer/skin/default/loading-0.gif",
+                "html/operationratio/issuetaskdesignate/issue_taskdesignate_consent.html",
+                "html/operationratio/dissueoperationratio/issueoperationratio_consent.html",
+                "img/login1/logo1.png",
+                "html/operationratio/pissueassess/issue_assess_list.html",
+                "html/problemtracking/js/problemtracking_list.js",
+                "html/provisional/html/provisional_expiration.html",
+                "html/layer/skin/default/loading-1.gif",
+                "html/provisional/js/provisional_handle.js",
+                "html/operationratio/dissueoperationratio/issue_list.js",
+                "html/patrolinspection/html/potrolinspection_outtime.html",
+                "js/mui.indexedlist.js",
+                "css/seedsui.min.css",
+                "html/operationratio/pissueassess/issue_assess_rollback.js",
+                "html/operationratio/Application.html",
+                "html/fonts/mui.ttf",
+                "html/operationratio/cissueaudit/zyzb_audit.html",
+                "html/problemtracking/specification",
+                "html/device/js/device_details.js",
+                "html/patrolinspection/specification",
+                "html/operationratio/akissueauditpg/issue_auditpg_consent.html",
+                "html/provisional/html/provisional_inspection.html",
+                "js/mui.picker.min.js",
+                "html/patrolinspection/js/patrolinspection.js",
+                "html/layer/layer.js",
+                "css/fonts/iconfont.ttf",
+                "js/mui.zoom.js",
+                "html/operationratio/purchasebmld/purchase_dept_leader_rollback.js",
+                "html/problemtracking/html/problemtraking-details.html",
+                "js/mui.pullToRefresh.material.js",
+                "html/operationratio/requestnoteRead.html",
+                "html/routine/html/routine_handle.html",
+                "html/routine/html/routine_expiration.html",
+                "html/operationratio/pissueassess/issue_assess.js",
+                "html/operationratio/specification",
+                "html/provisional/js/provisional_port.js",
+                "html/operationratio/contractorRead.html",
+                "html/territorial/js/territorialsupervision.js",
+                "html/operationratio/akissueauditpg/Taskworksheet.js",
+                "html/operationratio/cissueaudit/issue_audit_consent.html",
+                "html/operationratio/dissueoperationratio/issue_operationratio.js",
+                "html/operationratio/pissueassess/issue_assess_push.html",
+                "html/problemReport/js/problemReport_list.js",
+                "html/layer/skin/default/layer.css",
+                "html/testCabinet/html/testCabinet_inspect.html",
+                "html/patrolinspection/html/patrolinspection_expiration.html",
+                "img/login/banner1.png",
+                "js/mui.listpicker.js",
+                "html/operationratio/pissueassess/issue_assess_consent.html",
+                "html/operationratio/fixedcontractor/fixedcontractor_consent.js",
+                "html/operationratio/dissueoperationratio/issueoperationratio_consent.js",
+                "html/operationratio/cissueaudit/issue_audit.js",
+                "html/fonts/mui-icons-extra.ttf",
+                "html/operationratio/fixedcontractor/fixedcontractor_audit.js",
+                "html/operationratio/akissueauditpg/issue_auditpg.js",
+                "js/mui.picker.all.js",
+                "html/operationratio/akissueauditpg/Taskworksheet.html",
+                "html/operationratio/requestnote.html",
+                "pjs/mui.min.js",
+                "html/provisional/specification",
+                "html/problemtracking/js/problemtraking-details.js",
+                "html/issued/js/issued.js",
+                "html/provisional/html/provisional_handle.html",
+                "html/patrolinspection/js/patrolinspection1_inspection1.js",
+                "html/operationratio/akissueauditpg/issue_auditpg.html",
+                "html/patrolinspection/js/patrolinspection_expiration.js",
+                "html/operationratio/purchasebmld/purchase_dept_leader_rollback.html",
+                "html/operationratio/pissueassess/issue_assess.html",
+                "html/routine/html/routine_abnormal.html",
+                "html/routine/js/routine_handle.js",
+                "html/routine/js/routine_inspect.js",
+                "html/patrolinspection/html/patrolinspection_inspection.html",
+                "html/operationratio/purchasebmld/purchase_dept_leader_list.html",
+                "fonts/mui-icons-extra.ttf",
+                "js/mui.poppicker.js",
+                "html/suppose/js/supposedobjective.js",
+                "html/layer/skin/default/icon.png",
+                "js/mui.js",
+                "js/city.data.js",
+                "html/testCabinet/js/testCabinet_expiration.js",
+                "js/beecloud.js",
+                "html/operationratio/pissueassess/issue_assess_list.js",
+                "html/operationratio/fallback.html",
+                "js/city.data-3.js",
+                "html/testCabinet/html/testCabinet_expiration.html",
+                "html/issued/specification",
+                "html/testCabinet/js/testCabinet.js",
+                "html/device/js/device-entry.js",
+                "html/operationratio/issuetaskdesignate/issue_taskdesignate_consent.js",
+                "html/testCabinet/js/testCabinet_inspect.js",
+                "html/operationratio/ajs/manageCommon.js",
+                "html/operationratio/requestnoteRead.js",
+                "html/operationratio/bissuetaskallot/Auxiliary_labor.html",
+                "html/territorial/specification",
+                "html/operationratio/bissuetaskallot/issue_taskallot_consent.js",
+                "js/mui.imageViewer.js",
+                "html/operationratio/fixedcontractor/fixedcontractor_consent.html",
+                "html/patrolinspection/js/patrolinspection_project.js",
+                "html/operationratio/dissueoperationratio/issue_operationratio.html",
+                "html/operationratio/fallback.js",
+                "html/operationratio/purchasebmld/purchase_dept_leader_taskdispose.js",
+                "js/mui.min.js",
+                "html/operationratio/push.js",
+                "js/webviewGroup.js",
+                "html/js/index.js",
+                "html/patrolinspection/js/patrolinspection_termination.js",
+                "html/operationratio/issuetaskdesignate/Registration.html",
+                "html/territorial/js/territorialsupervision_overdue_new.js",
+                "js/mui.pullToRefresh.js",
+                "html/operationratio/akissueauditpg/issue_auditpg_consent.js",
+                "html/routine/specification",
+                "html/operationratio/purchasebmld/purchase_dept_leader_consent.js",
+                "html/operationratio/purchasebmld/purchase_dept_leader_taskdispose.html",
+                "html/testCabinet/specification",
+                "html/layer/mobile/layer.js",
+                "html/patrolinspection/js/patrolinspection_inspection.js",
+                "html/operationratio/cissueaudit/zyzb_audit.js",
+                "html/operationratio/purchasebmld/purchase_dept_leader_list.js",
+                "html/operationratio/purchasebmld/purchase.html",
+                "html/operationratio/pissueassess/issue_assess_goodsadd.html",
+                "css/mui.min.css",
+                "html/layer/skin/default/loading-2.gif",
+                "js/mui.locker.js",
+                "html/operationratio/dissueoperationratio/goodsadd.js",
+                "html/operationratio/issuetaskdesignate/Registration.js",
+                "html/operationratio/cissueaudit/issue_audit.html",
+                "html/operationratio/cissueaudit/issue_audit_consent.js",
+                "html/routine/html/routine_inspection.html",
+                "html/TeamViewer/js/TeamViewer.js",
+                "html/operationratio/pissueassess/issue_assess_rollback.html",
+                "html/territorial/js/territorialsupervision_inspection.js",
+                "html/operationratio/purchasebmld/purchase_dept_leader_consent.html",
+                "css/fonts/iconfont.eot",
+                "html/territorial/html/territorialsupervision_inspectionplan.html",
+                "js/mui.picker.js",
+                "css/fonts/iconfont.woff",
+                "html/routine/js/routine_expiration.js",
+                "html/TeamViewer/specification",
+                "html/operationratio/pissueassess/issue_assess_taskdispose.js",
+                "html/operationratio/issuetaskdesignate/issue_taskdesignate.html",
+                "html/operationratio/fixedcontractor/fixedcontractor_audit.html",
+                "html/operationratio/purchasebmld/purchase_dept_leader_goodsadd.js",
+                "img/login1/cbo2.png",
+                "html/territorial/js/territorialsupervision_inspectionplan.js",
+                "html/operationratio/contractorRead.js",
+                "img/login1/bg.png",
+                "html/territorial/html/territorialsupervision_overdue_new.html",
+                "html/TeamViewer/html/TeamViewer.html",
+                "html/layer/mobile/need/layer.css",
+                "img/login1/logo2.png",
+                "js/arttmpl.js",
+                "html/operationratio/requestnote.js",
+                "html/operationratio/bissuetaskallot/issue_taskallot.html",
+                "html/operationratio/contractor.html",
+                "html/operationratio/dissueoperationratio/issue_list.html",
+                "css/fonts/iconfont.svg",
+                "js/mui.lazyload.img.js",
+                "html/operationratio/push.html",
+                "html/provisional/js/provisional_inspection.js",
+                "html/testCabinet/html/testCabinet_port.html",
+                "html/provisional/html/provisional_port.html",
+                "html/territorial/html/territorialsupervision_inspection.html",
+                "html/operationratio/purchasebmld/purchase_dept_leader_goodsadd.html",
+                "html/operationratio/dissueoperationratio/goodsapply.html",
+                "html/operationratio/operationratio.js",
+                "html/operationratio/bissuetaskallot/Scaffold_erection.html",
+                "html/testCabinet/html/patrolinspection_termination.html",
+                "html/operationratio/contractor.js",
+                "html/operationratio/dissueoperationratio/goodsadd.html",
+                "html/patrolinspection/js/patrolinspection_port.js",
+                "html/problemReport/specification",
+                "html/operationratio/issuetaskdesignate/issue_taskdesignate.js",
+                "html/js/login.js",
+                "html/testCabinet/js/patrolinspection_termination.js"
+            ]
+        }
+    },
+    "fullscreen" : false
+}

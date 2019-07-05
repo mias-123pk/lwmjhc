@@ -1,0 +1,120 @@
+﻿<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<title>净化厂</title>
+		<link rel="stylesheet" href="../pjs/seedsui/seedsui.min.css">
+		<link rel="stylesheet" href="layer/mobile/need/layer.css" />
+		<style>
+			.arrowbar .tab-label,
+			.menubar .tab-label {
+				display: block;
+				height: 25px;
+				font-size: 15px;
+				line-height: 24px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<div class="titlebar reverse">
+				<h1 class="text-center">系统设置</h1>
+			</div>
+		</header>
+		<!--主体-->
+		<article>
+			<table>
+				<tr>
+					<td>序号</td>
+					<td>名称</td>
+					<td>进度</td>
+					<td>操作</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>用户表</td>
+					<td><input id="IOT_USER_ORGANIZATION" style="width: 80%;" /></td>
+					<td><input type="button" value="初始化" onclick="initialization_phase('IOT_USER_ORGANIZATION')" /></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>角色表</td>
+					<td><input id="IOT_USER_ROLE" style="width: 80%;" /></td>
+					<td><input type="button" value="初始化" onclick="initialization_phase('IOT_USER_ROLE')" /></td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>用户角色关系表</td>
+					<td><input id="IOT_USER_USER_ROLE" style="width: 80%;" /></td>
+					<td><input type="button" value="初始化" onclick="initialization_phase('IOT_USER_USER_ROLE')" /></td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>巡检任务实例表</td>
+					<td><input id="CZ_TASK_INSPECTION" style="width: 80%;" /></td>
+					<td><input type="button" value="初始化" onclick="initialization_phase('CZ_TASK_INSPECTION')" /></td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>巡检点实例表</td>
+					<td><input id="CZ_TASK_INSPECTION_POINT" style="width: 80%;" /></td>
+					<td><input type="button" value="初始化" onclick="initialization_phase('CZ_TASK_INSPECTION_POINT')" /></td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>巡检内容实例表</td>
+					<td><input id="CZ_TASK_INSPECTION_CONTENT" style="width: 80%;" /></td>
+					<td><input type="button" value="初始化" onclick="initialization_phase('CZ_TASK_INSPECTION_CONTENT')" /></td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>巡检要求实例表</td>
+					<td><input id="CZ_TASK_INSPECTION_REQUIRE" style="width: 80%;" /></td>
+					<td><input type="button" value="初始化" onclick="initialization_phase('CZ_TASK_INSPECTION_REQUIRE')" /></td>
+				</tr>
+			</table>
+		</article>
+
+		<footer id='footer'>
+			<ul class="menubar">
+				<li onclick="javascript:index()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-home"></i>
+					<label class="tab-label">首页</label>
+				</li>
+				<li onclick="javascript:Set_new()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-gear-fill"></i>
+					<label class="tab-label">系统设置</label>
+				</li>
+				<li onclick="javascript:user()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-fileperson-fill"></i>
+					<label class="tab-label">个人中心</label>
+				</li>
+			</ul>
+		</footer>
+	</body>
+	<script src="../pjs/jquery.min.js"></script>
+	<script src="../pjs/mui.min.js"></script>
+	<script src="../pjs/com_sqlite.js"></script>
+	<script src="../pjs/common.js"></script>
+	<script src="layer/layer.js"></script>
+	<script src="js/setup.js"></script>
+	<script src="../pjs/seedsui/seedsui.min.js"></script>
+<script>
+		function index() {
+			jump('index.html')
+		}
+
+	function user() {
+			jump('user/user.html')
+		}
+
+		function Set_new() {
+			jump('setup.html');
+		}
+
+</script>
+</html>

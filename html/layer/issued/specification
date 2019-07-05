@@ -1,0 +1,17 @@
+功能说明：任务下达
+
+demo
+ 	$.ajax({
+		url : ajaxurl + say,
+		type : "get",
+		dataType : "jsonp",
+		jsonp : "jsonpCallBack",
+		cache : false,
+		success : function(data) {
+			return  data.datalist ;
+		},
+		error : function() {
+			alert("数据获取失败！");
+			return null;
+		}
+	});

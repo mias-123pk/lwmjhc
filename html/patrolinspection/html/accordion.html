@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>巡检点</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../../css/mui.min.css">
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon mui-icon-left-nav mui-pull-left" href="javaScript:back()"></a>
+			<h1 class="mui-title">巡检点</h1>
+		</header>
+		<div id="cc" style="margin: 60px 0px 0px 0px;"></div>
+		<script src="../../../pjs/jquery.min.js"></script>
+		<script src="../../../pjs/com_sqlite.js"></script>
+		<script src="../../../pjs/common.js"></script>
+		<script src="../../../js/mui.min.js"></script>
+		<script src="../../layer/layer.js"></script>
+		<script>
+			//上一级  TASK_ID 任务实例ID
+			var TASK_ID = '',
+				bool,
+				POINT_ID = '',
+				TASK_TIME = '',
+				TASK_PIID = '',
+				startTime = '',
+				endTime = '',
+				SCHEME_ID = '',
+				task_hours = '',
+				SCHEME_TYPE = '';
+
+			if(window.plus) {
+				plusReady();
+			} else {
+				document.addEventListener('plusready', plusReady, false);
+			}
+
+			function plusReady() {
+				layer.msg('加载界面。。。', {
+					icon: 16,
+					time: 100 * 1000,
+					shade: 0.01
+				});
+				bool = 'true'
+				TASK_ID = getQueryString("TASK_ID");
+				TASK_TIME = getQueryString('TASK_TIME');
+				TASK_PIID = getQueryString('TASK_PIID');
+				SCHEME_ID = getQueryString('SCHEME_ID');
+				task_hours = getQueryString('task_hours');
+				SCHEME_TYPE = getQueryString('SCHEME_TYPE');
+				console.log(task_hours);
+				var html = '';
+				var sql = "SELECT c1.*,c2.id as id,c2.STATE,c2.STATETIME,c2.ENDTIME,c2.REMARK1,c2.REMARK2,c2.VALUE,(select count(*) from CZ_TASK_INSPECTION_CONTENT c3 where c3.TASK_POINT_ID=c1.TASK_POINT_ID and (select count(*) from CZ_TASK_INSPECTION_REQUIRE c4 where c4.TASK_CONTENT_ID=c3.TASK_CONTENT_ID and c4.REMARKFOUR='TRUE')>0) as num  from CZ_TASK_INSPECTION_POINT c1 left JOIN CZ_TASK_RECORD c2 on c1.TASK_POINT_ID=c2.TASK_POINT_ID and c2.TASK_TIME='" + TASK_TIME + "' and c2.POSITION_NUM=1 where c1.TASK_ID=" + TASK_ID + " order by c1.task_point_num";
+
+				console.log(sql)
+				//查找数据
+				db.transaction(function(tx) {
+					tx.executeSql(sql, [], function(tx, result) {
+						layer.closeAll();
+						console.log('加载。。。。。。。。。。。')
+						var len = result.rows.length;
+						for(var i = 0; i < len; i++) {
+							var item = result.rows.item(i);
+							if(item.num > 0) {
+
+								var p_id = item.id;
+
+								startTime = item.STATETIME;
+								endTime = item.ENDTIME;
+
+								if(p_id == null) {
+									p_id = com_getUuid();
+									var sql_json = {};
+									sql_json.ID = p_id; //实例ID
+									sql_json.TASK_ID = item.TASK_ID; //任务ID
+									sql_json.TASK_POINT_ID = item.TASK_POINT_ID; //巡检点ID
+									sql_json.TASK_TIME = newDate; //任务日期
+									sql_json.STATE = 'UNFINISHED'; //任务状态
+									sql_json.POSITION_NUM = '1'; //任务类型 0 巡检任务实例 1 巡检点实例 2 巡检要求实例
+									sql_json.SCHEME_TYPE = SCHEME_TYPE; //任务标识
+									sql_json.TASK_PIID = TASK_PIID;
+									console.log(Assemble_sql_insert(sql_json, 'CZ_TASK_RECORD'))
+									criteSqllite(Assemble_sql_insert(sql_json, 'CZ_TASK_RECORD'));
+								}
+								var state = item.STATE;
+								html += '<div class="mui-content">';
+								html += '<div class="mui-card">';
+								html += '<div class="mui-card-content">';
+								html += '<div class="mui-card-content-inner">';
+								html += '<table style="width:100%">';
+								html += '<tr><td>巡检点</td><td> : </td><td>' + item.TASK_POINT_NAME + '</td><td></td></tr>';
+								if(startTime == 'null' || startTime == null) {
+									html += '<tr><td>开始时间</td><td> : </td><td>' + com_getNowFormatDate() + '</td>';
+								} else {
+									html += '<tr><td>开始时间</td><td> : </td><td>' + startTime + '</td>';
+								}
+								html += '<td rowspan="4" style="text-align: right;">';
+								html += '<a href="#" href="#" onclick="javascript:next(\'' + item.TASK_POINT_ID + '\',\'' + p_id + '\',\'' + state + '\')">';
+								html += '<img style="width: 100px;height: 30px;" src="../../../img/start.png" />';
+								html += '</a></td></tr>';
+
+								if(endTime == 'null' || endTime == null) {
+									html += '<tr><td>结束时间</td><td> : </td><td>---</td></tr>';
+								} else {
+									html += '<tr><td>结束时间</td><td> : </td><td>' + endTime + '</td></tr>';
+								}
+								html += '<tr><td>巡检项</td><td> : </td><td>' + item.num + '项</td></tr>';
+								if(state == 'FINISHED') {
+									html += '<tr><td>巡检状态</td><td> : </td><td style="color:green">已完成</td></tr>';
+								} else {
+									bool = false;
+									html += '<tr><td>巡检状态</td><td> : </td><td  style="color:red">未完成</td></tr>';
+								}
+								html += '</table>';
+								html += '</div>';
+								html += '</div>';
+								html += '</div>';
+							}
+						}
+						if(bool) {
+							var sql_CZ_TASK = "select * from CZ_TASK_RECORD where id='" + TASK_PIID + "'";
+							db.transaction(function(tx) {
+								tx.executeSql(sql_CZ_TASK, [], function(tx, result) {
+									var len = result.rows.length;
+									for(var i = 0; i < len; i++) {
+										var item = result.rows.item(i);
+										if(item.STATE == 'UNFINISHED') {
+											criteSqllite("update CZ_TASK_RECORD set STATE='FINISHED' where id='" + TASK_PIID + "'");
+											alert('巡检任务完成！');
+										}
+									}
+								}, function onError(tx, error) {
+									console.log(error.message);
+								});
+							});
+						}
+						$('#cc').html(html);
+					});
+				});
+			}
+
+			function next(TASK_POINT_ID, P_ID, state) {
+				if(startTime == 'null' || startTime == null) {
+
+					var sql_CZ_TASK = "update CZ_TASK_RECORD set STATETIME='" + com_getNowFormatDate() + "' where id='" + P_ID + "'";
+					db.transaction(function(tx) {
+						tx.executeSql(sql_CZ_TASK, [], function(tx, result) {
+
+							jump('patrolinspection1_inspection2.html?TYPE=1&TASK_POINT_ID=' + TASK_POINT_ID + '&TASK_ID=' + TASK_ID + '&TASK_TIME=' + TASK_TIME + '&POINT_PIID=' + P_ID + '&TASK_PIID=' + TASK_PIID + '&state=' + state + '&SCHEME_ID=' + SCHEME_ID + '&task_hours=' + task_hours + "&SCHEME_TYPE=" + SCHEME_TYPE);
+
+						}, function onError(tx, error) {
+							console.log(error.message);
+						});
+					});
+				} else {
+					jump('patrolinspection1_inspection2.html?TYPE=1&TASK_POINT_ID=' + TASK_POINT_ID + '&TASK_ID=' + TASK_ID + '&TASK_TIME=' + TASK_TIME + '&POINT_PIID=' + P_ID + '&TASK_PIID=' + TASK_PIID + '&state=' + state + '&SCHEME_ID=' + SCHEME_ID + '&task_hours=' + task_hours + "&SCHEME_TYPE=" + SCHEME_TYPE);
+				}
+			}
+
+			function back() {
+				jump('patrolinspection.html')
+			}
+		</script>
+	</body>
+
+</html>

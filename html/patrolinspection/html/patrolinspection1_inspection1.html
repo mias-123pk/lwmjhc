@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<title>巡回检查</title>
+		<link rel="stylesheet" href="../../../pjs/seedsui/seedsui.min.css">
+	</head>
+
+	<body ontouchstart="">
+		<header id="header">
+			<div class="titlebar reverse">
+				<a href="javascript:back_return()" class="button left"><i class="icon icon-arrowleft"></i></a>
+				<h1 class="text-center">巡检要求</h1>
+				<div class="right">
+					<a class="button" href="#" onclick="inspection()"> <i class="icon icon-chartpie-fill"></i> </a>
+					<a class="button" href="../../index.html"> <i class="icon icon-home"></i> </a>
+				</div>
+			</div>
+		</header>
+		<article>
+			<table id="table_project"></table>
+		</article>
+		<!-- 照片展示-->
+		</article>
+		<details open>
+			<summary class="sliver">
+				照片
+			</summary>
+			<ul class="my-gallery" id="photo">
+
+			</ul>
+			<div style="clear:both;"></div>
+		</details>
+		<details open>
+			<summary class="sliver">
+				视频
+			</summary>
+			<ul class="my-gallery" id="void">
+
+			</ul>
+			<div style="clear:both;"></div>
+		</details>
+		<br />
+		<br />
+		<footer>
+			<ul class="menubar">
+				<li onclick="javascript:getImage()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-rdodisk"></i>
+					<label class="tab-label">拍照片</label>
+				</li>
+				<li onclick="javascript:getVideo()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-rdodisk"></i>
+					<label class="tab-label">拍视频</label>
+				</li>
+				<li onclick="javascript:submit()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-rdodisk"></i>
+					<label class="tab-label">保存</label>
+				</li>
+			</ul>
+		</footer>
+		<!--Exmobi能力-->
+		<script src="../../../pjs/jquery.min.js"></script>
+		<script src="../../../pjs/seedsui/seedsui.min.js"></script>
+		<script src="../../../pjs/mui.min.js"></script>
+		<script src="../../../pjs/com_sqlite.js"></script>
+		<script src="../../../pjs/common.js"></script>
+		<script type="text/javascript" src="../../../pjs/common_photo.js" ></script>
+		<script src="../../layer/layer.js"></script>
+		<!-- 功能JS-->
+		<script src="../js/patrolinspection1_inspection1.js"></script>
+		<script>
+			//返回按键触发
+			document.addEventListener("backmonitor", function() {
+				back();
+			}, false);
+
+			function sql_true(result) {
+				var html_port = "";
+				html_port += '<tbody><tr>';
+				html_port += ' <td  style="width:25%">仪表位号</td>';
+				html_port += ' <td  style="width:25%">检查项</td>';
+				html_port += ' <td  style="width:20%">范围</td>';
+				html_port += ' <td  style="width:30%">仪表值</td>';
+				html_port += '</tr>';
+				for(var i = 0; i < result.length; i++) {
+					var item = result.item(i);
+					var id=item.id;
+					if(item.id==null){
+						id=com_getUuid();
+					criteSqllite("INSERT INTO CZ_TASK_RECORD VALUES ('" + id + "', '" + item.TASK_REQUIRE_ID + "', '" + item.TASK_ID + "', '" + item.TASK_POINT_ID + "', '', '" + newDate + "', '', '', '', '','UNFINISHED', 3, '')");	
+					}
+					//判断是否需要填值 位FALSE时候无法改变值
+					if(item.REMARKFOUR == "FALSE") {
+						if(item.TASK_REQUIRE_TYPE == '3') {
+							html_port += '<tr><td>' + item.TASK_EQU_POSITION_NUM + '</td>';
+							html_port += ' <td>' + item.TASK_REQUIRE_CONTEXT + '</td>';
+							if(item.TASK_REQUIRE_SYMBOL == 'ge') {
+								html_port += ' <td>' + item.TASK_REQUIRE_MAX + '≤</td>';
+							}
+							if(item.TASK_REQUIRE_SYMBOL == 'gt') {
+								html_port += ' <td>' + item.TASK_REQUIRE_MAX + '< </td>';
+							}
+							if(item.TASK_REQUIRE_SYMBOL == 'le') {
+								html_port += ' <td> ≤' + item.TASK_REQUIRE_MIX + '</td>';
+							}
+							if(item.TASK_REQUIRE_SYMBOL == 'lt') {
+								html_port += ' <td> <' + item.TASK_REQUIRE_MIX + '</td>';
+							}
+							if(item.TASK_REQUIRE_SYMBOL == 'ba') {
+								html_port += ' <td>' + item.TASK_REQUIRE_MIX + '-' + item.TASK_REQUIRE_MAX + '</td>';
+							}
+							html_port += '<td></td>';
+							html_port += '</tr>';
+						} else if(item.TASK_REQUIRE_TYPE == '2') {
+							html_port += '<tr><td>' + item.TASK_EQU_POSITION_NUM + '</td>';
+							var sql = "select * from CZ_CCS_PARA where CCS_PARA_ID='" + item.TASK_CCS_PARA_ID + "'";
+							//查找数据
+							db.transaction(function(tx) {
+								tx.executeSql(sql, [], function(tx, result) {
+									var len = result.rows.length;
+									for(var i = 0; i < len; i++) {
+										var item_sy = result.rows.item(i);
+										if(item_sy.TASK_REQUIRE_SYMBOL == 'ge') {
+											html_port += ' <td>' + item.TASK_REQUIRE_MAX + '≤</td>';
+										}
+										if(item_sy.TASK_REQUIRE_SYMBOL == 'gt') {
+											html_port += ' <td>' + item.TASK_REQUIRE_MAX + '< </td>';
+										}
+										if(item_sy.TASK_REQUIRE_SYMBOL == 'le') {
+											html_port += ' <td> ≤' + item.TASK_REQUIRE_MIX + '</td>';
+										}
+										if(item_sy.TASK_REQUIRE_SYMBOL == 'lt') {
+											html_port += ' <td> <' + item.TASK_REQUIRE_MIX + '</td>';
+										}
+										if(item_sy.TASK_REQUIRE_SYMBOL == 'ba') {
+											html_port += ' <td>' + item.TASK_REQUIRE_MIX + '-' + item.TASK_REQUIRE_MAX + '</td>';
+										}
+										html_port += '<td></td>';
+										html_port += '</tr>';
+									}
+								}, function onError(tx, error) {
+									console.log(error.message);
+								});
+							});
+
+						} else if(item.TASK_REQUIRE_TYPE == '1') {
+							html_port += '<tr><td>' + item.TASK_EQU_POSITION_NUM + '</td>';
+							html_port += ' <td>' + item.TASK_REQUIRE_CONTEXT + '</td>';
+							var TASK_REQUIRE_RES_DESC = item.TASK_REQUIRE_RES_DESC;
+							var arr = TASK_REQUIRE_RES_DESC.split(',');
+							html_port += ' <td>' + arr[0] + '/' + arr[1] + '</td>';
+							html_port += '<td></td>';
+							html_port += '</tr>';
+						}
+					} else { //不为FALSE的时候可以填值
+						if(item.TASK_REQUIRE_TYPE == '3') {
+							html_port += '<tr><td>' + item.TASK_EQU_POSITION_NUM + '</td>';
+							html_port += ' <td>' + item.TASK_REQUIRE_CONTEXT + '</td>';
+							if(item.TASK_REQUIRE_SYMBOL == 'ge') {
+								html_port += ' <td>' + item.TASK_REQUIRE_MAX + '≤</td>';
+							}
+							if(item.TASK_REQUIRE_SYMBOL == 'gt') {
+								html_port += ' <td>' + item.TASK_REQUIRE_MAX + '< </td>';
+							}
+							if(item.TASK_REQUIRE_SYMBOL == 'le') {
+								html_port += ' <td> ≤' + item.TASK_REQUIRE_MIX + '</td>';
+							}
+							if(item.TASK_REQUIRE_SYMBOL == 'lt') {
+								html_port += ' <td> <' + item.TASK_REQUIRE_MIX + '</td>';
+							}
+							if(item.TASK_REQUIRE_SYMBOL == 'ba') {
+								html_port += ' <td>' + item.TASK_REQUIRE_MIX + '-' + item.TASK_REQUIRE_MAX + '</td>';
+							}
+							if(item.TASK_REQUIRE_SYMBOL == '') {
+								html_port += ' <td> </td>';
+							}
+							
+							var TASK_REQUIRE_RESULT=item.TASK_REQUIRE_RESULT;
+							if(TASK_REQUIRE_RESULT=='null'){
+								TASK_REQUIRE_RESULT='';
+							}
+							var VALUE=item.VALUE;
+							if(VALUE==null){
+								VALUE=0;
+							}
+							html_port += '<td><input type="text" onfocus="builesdcs(\'' + item.TASK_REQUIRE_ID + '\',\'' + item.remarkone + '\')"  ONBLUR="buileskip(\'' + item.TASK_REQUIRE_ID + '\')"  style="width:50%;" id="' + item.TASK_REQUIRE_ID + '" value="' + VALUE + '"/>';
+							html_port += '<input type="text" readonly="readonly" style="width:50%;" id="' + item.TASK_REQUIRE_ID + 'dcs" /></td>';
+							html_port += '</tr>';
+						} else if(item.TASK_REQUIRE_TYPE == '2') {
+							html_port += '<tr><td>' + item.TASK_EQU_POSITION_NUM + '</td>';
+							html_port += ' <td>' + item.TASK_REQUIRE_CONTEXT + '</td>';
+							var sql = "select * from CZ_CCS_PARA where CCS_PARA_ID='" + item.TASK_CCS_PARA_ID + "'";
+							//查找数据
+							db.transaction(function(tx) {
+								tx.executeSql(sql, [], function(tx, result) {
+									var len = result.rows.length;
+									for(var i = 0; i < len; i++) {
+										var item_sy = result.rows.item(i);
+										if(item_sy.TASK_REQUIRE_SYMBOL == 'ge') {
+											html_port += ' <td>' + item.TASK_REQUIRE_MAX + '≤</td>';
+										}
+										if(item_sy.TASK_REQUIRE_SYMBOL == 'gt') {
+											html_port += ' <td>' + item.TASK_REQUIRE_MAX + '< </td>';
+										}
+										if(item_sy.TASK_REQUIRE_SYMBOL == 'le') {
+											html_port += ' <td> ≤' + item.TASK_REQUIRE_MIX + '</td>';
+										}
+										if(item_sy.TASK_REQUIRE_SYMBOL == 'lt') {
+											html_port += ' <td> <' + item.TASK_REQUIRE_MIX + '</td>';
+										}
+										if(item_sy.TASK_REQUIRE_SYMBOL == 'ba') {
+											html_port += ' <td>' + item.TASK_REQUIRE_MIX + '-' + item.TASK_REQUIRE_MAX + '</td>';
+										}
+										if(item.TASK_REQUIRE_SYMBOL == '') {
+											html_port += ' <td> </td>';
+										}
+										html_port += '<td><input type="text" onfocus="builesdcs(\'' + item.TASK_REQUIRE_ID + '\',\'' + item.remarkone + '\')" ONBLUR="buileskip(\'' + item.TASK_REQUIRE_ID + '\')" style="width:50%;" id="' + item.TASK_REQUIRE_ID + '" value="' + item.TASK_REQUIRE_RESULT + '"/>' + item.VALUE + '</td>';
+										html_port += '<input type="text" readonly="readonly" style="width:50%;" id="' + item.TASK_REQUIRE_ID + 'dcs" /></td>';
+										html_port += '</tr>';
+									}
+								}, function onError(tx, error) {
+									console.log(error.message);
+								});
+							});
+
+						} else if(item.TASK_REQUIRE_TYPE == '1') {
+							html_port += '<tr><td>' + item.TASK_EQU_POSITION_NUM + '</td>';
+							html_port += ' <td>' + item.TASK_REQUIRE_CONTEXT + '</td>';
+							var TASK_REQUIRE_RES_DESC = item.TASK_REQUIRE_RES_DESC;
+							console.log(TASK_REQUIRE_RES_DESC)
+							var arr = TASK_REQUIRE_RES_DESC.split(',');
+							if(item.MULCHOICE == 1) {
+								html_port += ' <td>在用设备</td>';
+								var TASK_REQUIRE_ID = item.TASK_REQUIRE_ID;
+								html_port += '<td>';
+								for(var i = 0; i < arr.length; i++) {
+									if(item.TASK_REQUIRE_RESULT.indexOf(arr[i]) >= 0) {
+										html_port += '<input name="test" type="checkbox" value="' + arr[i] + '" checked="checked"/>' + arr[i];
+									} else {
+										html_port += '<input name="test" type="checkbox" value="' + arr[i] + '"/>' + arr[i];
+									}
+								}
+								html_port += '</td>';
+							} else {
+								html_port += ' <td>' + arr[0] + '/' + arr[1] + '</td>';
+								var TASK_REQUIRE_ID = item.TASK_REQUIRE_ID;
+								if(item.VALUE == arr[0]) {
+									html_port += '<td><input name="' + item.TASK_REQUIRE_ID + '" type="radio" value="' + arr[0] + '" checked="checked"/>' + arr[0];
+									html_port += '<input onclick="buileskip(\'' + TASK_REQUIRE_ID + '\')" name="' + item.TASK_REQUIRE_ID + '" type="radio" value="' + arr[1] + '" />' + arr[1] + '</td>';
+								} else if(item.VALUE == arr[1]) {
+									html_port += '<td><input name="' + item.TASK_REQUIRE_ID + '" type="radio" value="' + arr[0] + '" />' + arr[0];
+									html_port += '<input onclick="buileskip(\'' + TASK_REQUIRE_ID + '\')" name="' + item.TASK_REQUIRE_ID + '" type="radio" value="' + arr[1] + '" checked="checked"/>' + arr[1] + '</td>';
+								} else {
+									html_port += '<td><input name="' + item.TASK_REQUIRE_ID + '" type="radio" value="' + arr[0] + '" />' + arr[0];
+									html_port += '<input onclick="buileskip(\'' + TASK_REQUIRE_ID + '\')" name="' + item.TASK_REQUIRE_ID + '" type="radio" value="' + arr[1] + '" />' + arr[1] + '</td>';
+								}
+							}
+							html_port += '</tr>';
+						}
+					}
+				}
+				html_port += '</tbody>';
+				$("#table_project").html(html_port);
+			}
+		</script>
+	</body>
+</html>

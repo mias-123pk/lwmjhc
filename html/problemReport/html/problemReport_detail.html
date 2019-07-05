@@ -1,0 +1,373 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<title>移动端手动上报</title>
+		<link rel="stylesheet" href="../../../css/mui.min.css">
+		<link rel="stylesheet" href="../../../css/hb_common.css">
+		<link rel="stylesheet" href="../../../pjs/seedsui/seedsui.min.css">
+	</head>
+
+	<body ontouchstart="">
+		<header>
+			<div class="titlebar reverse">
+				<a href="javascript:back_return()" class="button left"><i class="icon icon-arrowleft"></i></a>
+				<h1 class="text-center">移动端手动上报</h1>
+				<div class="right">
+					<a class="button" href="../../index.html"> <i class="icon icon-home"></i> </a>
+				</div>
+			</div>
+		</header>
+		<article>
+			<table>
+				<tr>
+					<td>上报人:</td>
+					<td>
+						<input value="" type="text" style="height:100%;width:95%" id="creature" readonly="readonly" />
+					</td>
+				</tr>
+				<tr>
+					<td style="width:30%">属地单位:</td>
+					<td>
+						<select  style="height:160%;width:100%" lay-verify="">
+							<option value=''>净化工段</option>
+							<option value=''>维修工段</option>
+							<option value=''>HSE办公室</option>
+							<option value=''>设备办</option>
+							<option value=''>生产办</option>
+							<option value=''></option>
+							<option value=''></option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td style="width:30%">问题区域:</td>
+					<td>
+						<select  style="height:160%;width:100%" lay-verify="">
+							<option value=''>主体装置一列</option>
+							<option value=''>主体装置二列</option>
+							<option value=''>主体装置三列</option>
+							<option value=''>主体装置四列</option>
+							<option value=''>主体装置五列</option>
+							<option value=''>主体装置六列</option>
+							<option value=''>主体装置七列</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td style="width:30%">所属专业:</td>
+					<td>
+						<select  style="height:160%;width:100%" lay-verify="">
+							<option value=''>仪表</option>
+							<option value=''>维修</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td style="width:30%">设备位号:</td>
+					<td>
+						<select  style="height:160%;width:100%" lay-verify="">
+							<option value=''>仪表</option>
+							<option value=''>维修</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td style="width:30%">问题类别:</td>
+					<td>
+						<select  style="height:160%;width:100%" lay-verify="">
+							<option value=''>仪表</option>
+							<option value=''>维修</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div>
+							问题描述
+						</div>
+						<div>
+							<textarea style="width:90%" id="PROBLEMDESCRIBE"></textarea>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</article>
+		<article>
+			<details open>
+				<summary class="sliver">
+					关联设备信息
+				</summary>
+				<ul class="my-gallery" id="scansion">
+
+				</ul>
+				<div style="clear:both;"></div>
+			</details>
+			<details open>
+				<summary class="sliver">
+					照片
+				</summary>
+				<div class="mui-content" style="background-color:#fff">
+				<ul class="mui-table-view mui-grid-view" id="photo">
+					
+  				
+				</ul>
+				
+				</div>
+				<div style="clear:both;"></div>
+			</details>
+			<details open>
+				<summary class="sliver">
+					视频
+				</summary>
+				<ul class="my-gallery" id="void">
+
+				</ul>
+				<div style="clear:both;"></div>
+			</details>
+		</article>
+		<!--图片浏览窗口-->
+		<br />
+		<br />
+		<br />
+		<footer>
+			<ul class="menubar">
+				<li onclick="javascript:readData()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-pic"></i>
+					<label class="tab-label">扫描设备</label>
+				</li>
+				<li onclick="javascript:getImage()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-pic"></i>
+					<label class="tab-label">拍照片</label>
+				</li>
+				<li onclick="javascript:getVideo()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-video"></i>
+					<label class="tab-label">拍视频</label>
+				</li>
+				<li onclick="javascript:save()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-rdodisk"></i>
+					<label class="tab-label">暂存</label>
+				</li>	
+				<li onclick="javascript:save()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-rdodisk"></i>
+					<label class="tab-label">问题上报</label>
+				</li>
+			</ul>
+		</footer>
+		<script src="../../../pjs/jquery.min.js"></script>
+		<script src="../../../pjs/seedsui.min.js"></script>
+		<script src="../../../pjs/mui.min.js"></script>
+		<script src="../../../pjs/com_sqlite.js"></script>
+		<script type="text/javascript" src="../../../pjs/hb_common.js"></script>
+		<script type="text/javascript" src="../../../pjs/nfc.js"></script>
+		<script type="text/javascript" src="../../../pjs/common_photo.js"></script>
+		<script type="text/javascript" src="../../layer/layer.js"></script>
+		<script src="../../../pjs/common.js"></script>
+		<script src="../js/problemReport_detail.js"></script>
+		<script>
+			//返回按键触发
+			document.addEventListener("backmonitor", function() {
+				backs();
+			}, false);
+		</script>
+		<script>
+			var unit = '',
+				type = '',
+				major = '',
+				state = '',
+				status = '',
+				behavior = '',
+				PROBLEMDESCRIBE = '';
+
+			function initialization(T_PROBLEM_REP_ID) {
+				//申请人
+				$("#creature").val(localStorage.getItem("username"));
+				//所属部门
+				$("#DEPET").val(localStorage.getItem("DEPET"));
+				var sql = "select * from CZ_TASK_PROBLEM_REPORT where T_PROBLEM_REP_ID='" + T_PROBLEM_REP_ID + "'";
+				db.transaction(function(tx) {
+					tx.executeSql(sql, [], function(tx, result) {
+						var len = result.rows.length;
+						for(var i = 0; i < len; i++) {
+							var item = result.rows.item(i);
+							unit = item.WEL_ID;
+							type = item.PROBLEMTYPE;
+							major = item.PROFESSION;
+							state = item.PROBLEMCLASS;
+							status = item.REMARKFIVE;
+							behavior = item.REMARKSIX;
+							PROBLEMDESCRIBE = item.PROBLEMDESCRIBE;
+						}
+						//装置单元
+						device_unit(unit);
+						//问题类型
+						problem_type(type);
+						//所属专业
+						Subordinate_major(major);
+						//问题类别/状态
+						problem_state(state);
+						//不安全行为/状况
+						unsafe_status(status);
+						//具体行为
+						remarksix(status, behavior);
+						//问题描述
+						$('#PROBLEMDESCRIBE').val(PROBLEMDESCRIBE);
+					}, function onError(tx, error) {
+						console.log(error.message);
+					});
+				});
+			}
+			//选中的不安全行为/状况
+			function remakfiveUnit() {
+				var options = $("#REMARKFIVE option:selected");
+				//选中的value
+				REMARKFIVE = options.val();
+				//选中的text
+				remarksix(options.val(), '');
+			}
+			//加载具体行为
+			function remarksix(status, behavior) {
+				var nametypes = 'select t1.* from CZ_UNSAFE_ACTION t1,CZ_UNSAFE_TYPE t2 where t1.TYPE_CODE=t2.TYPE_CODE and t2.TYPE_NAME="' + status + '"';
+				$("#REMARKSIX").empty();
+				$("#REMARKSIX").append("<option value=''>点击此处选择具体行为</option>");
+				//查找数据
+				db.transaction(function(tx) {
+					tx.executeSql(nametypes, [], function(tx, result) {
+						var len = result.rows.length;
+						for(var i = 0; i < len; i++) {
+							var item = result.rows.item(i);
+							if(behavior == item.TYPE_NAME) {
+								$("#REMARKSIX").append("<option value='" + item.TYPE_NAME + "' selected = 'selected' >" + item.TYPE_NAME + "</option>");
+							} else {
+								$("#REMARKSIX").append("<option value='" + item.TYPE_NAME + "'>" + item.TYPE_NAME + "</option>");
+							}
+						}
+					}, function onError(tx, error) {
+						console.log(error.message);
+					});
+				});
+
+			}
+
+			//加载装置单元			
+			function device_unit(unit) {
+				console.log(unit)
+				//追加写option之前先做清空处理
+				$("#installationuUnit").empty();
+				//装置单元下拉框处初始化数据
+				var sql_UNIT = "select * from CZ_WELLSTATION_NEWS where FATHER_ID=0";
+				//除开净化厂之外的所有单元装置结果
+				$("#installationuUnit").append("<option value=''>点击此处选择装置单元</option>");
+				var val = "";
+				//查找数据
+				db.transaction(function(tx) {
+					tx.executeSql(sql_UNIT, [], function(tx, result) {
+						var len = result.rows.length;
+						for(var i = 0; i < len; i++) {
+							var item = result.rows.item(i);
+							if(unit != '') {
+								if(item.WEL_ID == unit) {
+									val = "<option value='" + item.WEL_ID + "' selected = 'selected'>" + item.WEL_NAME + "</option>";
+								} else {
+									val = "<option value='" + item.WEL_ID + "'>" + item.WEL_NAME + "</option>";
+								}
+							} else {
+								val = "<option value='" + item.WEL_ID + "'>" + item.WEL_NAME + "</option>";
+							}
+							$("#installationuUnit").append(val);
+						}
+					}, function onError(tx, error) {
+						console.log(error.message);
+					});
+				});
+			}
+
+			//问题类型
+			function problem_type(type) {
+				var ce = '净化巡检,化验作业,电站巡检,机械巡检,仪表巡检,电工班巡检,临时任务,例行作业';
+				var ces = ce.split(',');
+				//追加写option之前先做清空处理
+				$("#questiontype").empty();
+				//除开净化厂之外的所有单元装置结果
+				$("#questiontype").append("<option value=''>点击此处选择问题类型</option>");
+				for(var i = 1; i < ces.length + 1; i++) {
+					if(i <= 2) {
+						if(type == i) {
+							$("#questiontype").append("<option value='" + i + ",0' selected = 'selected' >" + ces[i - 1] + "</option>");
+						} else {
+							$("#questiontype").append("<option value='" + i + ",0'>" + ces[i - 1] + "</option>");
+						}
+					} else {
+						if(type == i) {
+							$("#questiontype").append("<option value='" + i + ",1' selected = 'selected'>" + ces[i - 1] + "</option>");
+						} else {
+							$("#questiontype").append("<option value='" + i + ",1'>" + ces[i - 1] + "</option>");
+						}
+					}
+				}
+			}
+
+			//所属专业
+			function Subordinate_major(major) {
+				var ce = '管理,工艺,机械,电气,仪表,环保,化验,物资,土建,HSE,消防,其他';
+				var ces = ce.split(',');
+				//追加写option之前先做清空处理
+				$("#PROFESSION").empty();
+				//除开净化厂之外的所有单元装置结果
+				$("#PROFESSION").append("<option value=''>点击此处选择所属专业</option>");
+				for(var i = 0; i < ces.length; i++) {
+					if(major == ces[i]) {
+						$("#PROFESSION").append("<option value='" + ces[i] + "' selected = 'selected' >" + ces[i] + "</option>");
+					} else {
+						$("#PROFESSION").append("<option value='" + ces[i] + "'>" + ces[i] + "</option>");
+					}
+				}
+			}
+
+			//问题类别/状态
+			function problem_state(state) {
+				var ce = '不安全状态卡,分厂级检查,总厂级检查,分公司及以上检查,体系审核,地方安全环保检查,总厂QHSE监督站,分公司HSE督察中心,其他';
+				var ces = ce.split(',');
+				//追加写option之前先做清空处理
+				$("#PROBLEMCLASS").empty();
+				//除开净化厂之外的所有单元装置结果
+				$("#PROBLEMCLASS").append("<option value=''>点击此处选择问题类别/状态</option>");
+				for(var i = 0; i < ces.length; i++) {
+					if(state == ces[i]) {
+						$("#PROBLEMCLASS").append("<option value='" + ces[i] + "' selected = 'selected' >" + ces[i] + "</option>");
+					} else {
+						$("#PROBLEMCLASS").append("<option value='" + ces[i] + "'>" + ces[i] + "</option>");
+					}
+				}
+			}
+			//不安全行为/状况
+			function unsafe_status(status) {
+				var sql_type = 'select * from CZ_UNSAFE_TYPE order by TYPE_CODE';
+				//追加写option之前先做清空处理
+				$("#REMARKFIVE").empty();
+				$("#REMARKFIVE").append("<option value=''>点击此处选择不安全行为/状况</option>");
+				//查找数据
+				db.transaction(function(tx) {
+					tx.executeSql(sql_type, [], function(tx, result) {
+						var len = result.rows.length;
+						for(var i = 0; i < len; i++) {
+							var item = result.rows.item(i);
+							if(status == item.TYPE_NAME) {
+								$("#REMARKFIVE").append("<option value='" + item.TYPE_NAME + "' selected = 'selected' >" + item.TYPE_NAME + "</option>");
+							} else {
+								$("#REMARKFIVE").append("<option value='" + item.TYPE_NAME + "'>" + item.TYPE_NAME + "</option>");
+							}
+						}
+					}, function onError(tx, error) {
+						console.log(error.message);
+					});
+				});
+			}
+		</script>
+
+	</body>
+
+</html>

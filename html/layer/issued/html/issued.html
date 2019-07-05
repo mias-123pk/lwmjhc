@@ -1,0 +1,130 @@
+<!doctype html>
+<html isbridge="true">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<title>临时任务下达</title>
+				<link rel="stylesheet" href="../../../pjs/seedsui/seedsui.min.css">
+	</head>
+	<body ontouchstart="">
+		<header>
+			<div class="titlebar reverse">
+				<a href="../../index.html" class="button left" ><i class="icon icon-arrowleft"></i></a>
+				<h1 class="text-center">临时任务下达</h1>
+				<div class="right" id="op_header">
+					<!--<a class="button" href="../../index.html"> <i class="icon icon-home"></i> </a>-->
+				</div>
+			</div>
+		</header>
+
+		<article>
+			<table>
+				<tr>
+					<td>下达人:</td>
+					<td>
+						<select style="height:150%;width:96%" id="creature">
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>下达部门:</td>
+					<td>
+					<input type="text" id="branch" style="width:90%"/>
+					</td>
+				</tr>
+				<tr>
+					<td>下达人联系方式:</td>
+					<td>
+					<input type="text" id="contact" style="width:90%"/>
+					</td>
+				</tr>
+				<br />
+				<tr>
+					<td>任务名称:</td>
+					<td>
+					<input type="text" id="taskname" style="width:90%"/>
+					</td>
+				</tr>
+				<tr>
+					<td>小组名:</td>
+					<td><select id="squad" style="height:150%;width:96%">
+
+					</select></td>
+				</tr>
+				<tr>
+					<td>操作卡名称:</td>
+					<td>
+						<a class="button login-submit block radius4" style="width:96%" href="javascript:chocked()">选择操作卡</a>
+					<span id="spancoade"></span>
+					</td>
+				</tr>
+				<tr>
+					
+					<td>是否关联设备:</td>
+					<td>
+					<select id="facility" style="height:150%;width:96%">
+						<option value="TRUE">是</option>
+						<option value="FALSE">否</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>要求完成日期:</td>
+					<td>
+					<input type="datetime-local" id="askTime" style="width:90%"/>
+					</td>
+				</tr>
+				<tr>
+					<td>计划完成时间点:</td>
+					<td>
+					<input type="text" id="planTime" style="width:90%"/>
+					</td>
+				</tr>
+				<tr>
+					<td>提前提醒:</td>
+					<td>
+					<input type="text"id="remind" style="width:90%"/>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">任务内容</td>
+				</tr>
+				<tr>
+					<td colspan="2">					<textarea id="content" style="width:94%"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2">风险提示</td>
+				</tr>
+				<tr>
+					<td colspan="2">					<textarea id="reminder" style="width:94%"></textarea></td>
+				</tr>
+			</table>
+		</article>
+		<br />
+		<br />
+		<br />
+		<!--页面底部-->
+		<footer id='footer'>
+			<ul class="menubar">
+				<li onclick="javascript:savecoade()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-hook"></i>
+					<label class="tab-label">确定</label>
+				</li>
+			</ul>
+		</footer>
+		<script src="../../../pjs/jquery.min.js"></script>
+		<script src="../../../pjs/seedsui.min.js"></script>
+		<script src="../../../pjs/mui.min.js"></script>
+		<script src="../../../pjs/com_sqlite.js"></script>
+		<script src="../../../pjs/common.js"></script>
+		<script src="../../layer/layer.js"></script>
+		<!-- 功能JS-->
+		<script src="../js/issued.js"></script>
+		<script>
+			//返回按键触发
+			document.addEventListener("backmonitor", function() {
+				back();
+			}, false);
+		</script>
+	</body>
+</html>

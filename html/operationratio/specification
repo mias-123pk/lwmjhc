@@ -1,0 +1,17 @@
+功能说明：作业准备   (主要调用pc端数据接口，做数据的展示和操作）
+
+demo
+ 	$.ajax({
+		url : ajaxurl + say,
+		type : "get",
+		dataType : "jsonp",
+		jsonp : "jsonpCallBack",
+		cache : false,
+		success : function(data) {
+			return  data.datalist ;
+		},
+		error : function() {
+			alert("数据获取失败！");
+			return null;
+		}
+	});

@@ -1,0 +1,124 @@
+<!-- HTML5文件 -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<title>巡回检查_终止</title>
+		<link rel="stylesheet" href="../../../pjs/seedsui/seedsui.min.css">
+	</head>
+	<body>
+		<header>
+			<div class="titlebar reverse">
+				<a href="javascript:back()" class="button left" ><i class="icon icon-arrowleft"></i></a>
+				<h1 class="text-center">终止</h1>
+				<div class="right">
+					<!--<a class="button" href="#" onclick="getUrl()"> <i class="icon icon-chartpie-fill"></i> </a>-->
+					<a class="button" href="../../index.html"> <i class="icon icon-home"></i> </a>
+				</div>
+			</div>
+		</header>
+		<article>
+			<hr/><hr/>
+			<div align="center"><font style = "color:black;font-family:'Times New Roman';" id = 'title'>名称</font></div>
+			<hr/><br/>
+			<font style = "color:red;font-family:'Times New Roman'">&nbsp;终止该任务!</font>
+			<br/><hr/><br/>
+			<font style = "color:black;font-family:'Times New Roman'">&nbsp;请输入终止原因：</font>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="javascript:chocked()">常见终止原因</a>
+			<div class="row padding8">
+					<div class="input-box" style="width:100%">
+						<textarea class="noborder" name="personal" style="width:100%" id="textarea1"></textarea>
+					</div>
+			</div>			
+		<details open>
+			<summary class="sliver">
+				照片
+			</summary>
+			<ul class="my-gallery" id="photo">
+
+			</ul>
+			<div style="clear:both;"></div>
+		</details>
+		<details open>
+			<summary class="sliver">
+				视频
+			</summary>
+			<ul class="my-gallery" id="void">
+
+			</ul>
+			<div style="clear:both;"></div>
+		</details>
+		</article>
+		<br />
+		<br />
+		<!--图片浏览窗口-->
+		<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="pswp__bg"></div>
+			<div class="pswp__scroll-wrap">
+				<div class="pswp__container">
+					<div class="pswp__item"></div>
+					<div class="pswp__item"></div>
+					<div class="pswp__item"></div>
+				</div>
+				<div class="pswp__ui pswp__ui--hidden">
+					<div class="pswp__top-bar">
+						<div class="pswp__counter"></div>
+						<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+						<div class="pswp__preloader">
+							<div class="pswp__preloader__icn">
+								<div class="pswp__preloader__cut">
+									<div class="pswp__preloader__donut"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+						<div class="pswp__share-tooltip"></div>
+					</div>
+					<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+					<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+					<div class="pswp__caption">
+						<div class="pswp__caption__center"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</article>
+		<br />		
+		<footer>
+			<ul class="menubar">
+				<li onclick="javascript:getCamera()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-pic"></i>
+					<label class="tab-label">拍照片</label>
+				</li>
+				<li onclick="javascript:getCameras()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-video"></i>
+					<label class="tab-label">拍视频</label>
+				</li>
+				<li onclick="javascript:save()" class="tab" data-role="tab" href="#info_article" data-toggle="article">
+					<i class="icon icon-rdodisk"></i>
+					<label class="tab-label">保存</label>
+				</li>
+			</ul>
+		</footer>
+		<script src="../../../pjs/jquery.min.js"></script>
+		<script src="../../../pjs/seedsui/seedsui.min.js"></script>
+		<script src="../../../pjs/mui.min.js"></script>
+		<script src="../../../pjs/com_sqlite.js"></script>
+		<script src="../../../pjs/common.js"></script>
+		<script src="../../layer/layer.js"></script>
+		<script src="../../../pjs/nfc.js"></script>
+		<!-- 功能js-->
+		<script src="../js/patrolinspection_termination.js"></script>
+	<script>
+		//返回按键触发
+		document.addEventListener("backmonitor",function(){
+			back();
+		},false);
+	</script>
+	</body>
+</html>

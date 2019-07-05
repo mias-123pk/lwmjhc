@@ -1,0 +1,263 @@
+{
+	"index.html": {
+		"href": "index.html",
+		"priority": 0,
+		"resources": [],
+		"refer": []
+	},
+	"html/index.html": {
+		"refer": [
+			"html/patrolinspection/html/patrolinspection.html",
+			"html/login.html",
+			"html/suppose/html/supposed.html",
+			"html/patrolinspection/html/patrolinspection_port.html",
+			"html/routine/html/routine.html",
+			"html/device/html/device-entry.html",
+			"html/territorial/html/territorialsupervision.html",
+			"html/provisional/html/provisional.html",
+			"html/operationratio/operationratio.html",
+			"html/testCabinet/html/testCabinet.html",
+			"html/problemReport/html/problemReport_list.html",
+			"html/problemtracking/html/problemtracking_list.html",
+			"html/issued/html/issued.html",
+			"html/suppose/html/supposedobjective.html",
+			"html/device/index.html",
+			"html/device/html/offcanvas.html",
+			"html/routine/html/routine_inspect.html",
+			"html/setup.html",
+			"html/device/html/supposed.html",
+			"html/device/html/device.html",
+			"html/device/html/device-list.html",
+			"html/user/user.html",
+			"html/iot_process/html/report.html",
+			"html/iot_process/html/pending-problem.html"
+		],
+		"resources": []
+	},
+	"html/login.html": {
+		"refer": [
+			"html/index.html",
+			"html/index2.html"
+		],
+		"resources": [
+			"pjs/download.js",
+			"pjs/com_sqlite.js",
+			"pjs/common.js"
+		]
+	},
+	"html/suppose/html/supposed.html": {
+		"refer": [
+			"html/index.html",
+			"html/suppose/html/supposedobjective.html"
+		],
+		"resources": []
+	},
+	"html/patrolinspection/html/patrolinspection.html": {
+		"refer": [
+			"html/index.html",
+			"html/patrolinspection/html/patrolinspection_port.html",
+			"html/patrolinspection/html/accordion.html"
+		],
+		"resources": []
+	},
+	"html/patrolinspection/html/patrolinspection_port.html": {
+		"refer": [
+			"html/patrolinspection/html/patrolinspection.html",
+			"html/index.html",
+			"html/patrolinspection/html/patrolinspection_project.html",
+			"html/patrolinspection/html/patrolinspection_termination.html"
+		],
+		"resources": []
+	},
+	"html/device/html/device-entry.html": {
+		"refer": [
+			"html/index.html"
+		],
+		"resources": []
+	},
+	"html/suppose/html/supposedobjective.html": {
+		"refer": [
+			"html/index.html",
+			"html/suppose/html/supposed.html"
+		],
+		"resources": []
+	},
+	"html/patrolinspection/html/patrolinspection_project.html": {
+		"refer": [
+			"html/patrolinspection/html/patrolinspection_port.html",
+			"html/index.html",
+			"html/patrolinspection/html/patrolinspection1_inspection1.html",
+			"html/patrolinspection/html/patrolinspection_termination.html"
+		],
+		"resources": []
+	},
+	"html/patrolinspection/html/patrolinspection1_inspection1.html": {
+		"refer": [
+			"html/patrolinspection/html/patrolinspection_project.html",
+			"html/index.html"
+		],
+		"resources": []
+	},
+	"html/territorial/html/territorialsupervision.html": {
+		"refer": [
+			"html/index.html"
+		],
+		"resources": []
+	},
+	"html/routine/html/routine.html": {
+		"refer": [
+			"html/index.html"
+		],
+		"resources": []
+	},
+	"html/provisional/html/provisional.html": {
+		"refer": [
+			"html/index.html"
+		],
+		"resources": []
+	},
+	"html/operationratio/operationratio.html": {
+		"refer": [
+			"html/index.html"
+		],
+		"resources": []
+	},
+	"html/testCabinet/html/testCabinet.html": {
+		"refer": [
+			"html/index.html"
+		],
+		"resources": []
+	},
+	"html/patrolinspection/html/patrolinspection_termination.html": {
+		"refer": [
+			"html/index.html",
+			"html/patrolinspection/html/patrolinspection_port.html",
+			"html/patrolinspection/html/patrolinspection_project.html"
+		],
+		"resources": []
+	},
+	"html/problemReport/html/problemReport_list.html": {
+		"refer": [
+			"html/problemReport/html/problemReport_detail.html",
+			"html/index.html"
+		],
+		"resources": []
+	},
+	"html/problemReport/html/problemReport_detail.html": {
+		"refer": [
+			"html/index.html",
+			"html/problemReport/html/problemReport_list.html",
+			"html/patrolinspection/html/patrolinspection1_inspection2.html"
+		],
+		"resources": []
+	},
+	"html/problemtracking/html/problemtracking_list.html": {
+		"refer": [
+			"html/index.html"
+		],
+		"resources": []
+	},
+	"html/issued/html/issued.html": {
+		"refer": [
+			"html/index.html"
+		],
+		"resources": []
+	},
+	"html/device/html/offcanvas.html": {
+		"refer": [
+			"html/index.html"
+		],
+		"resources": []
+	},
+	"html/setup.html": {
+		"refer": [
+			"html/index.html",
+			"html/user/user.html"
+		],
+		"resources": []
+	},
+	"html/device/html/supposed.html": {
+		"refer": [
+			"html/index.html"
+		],
+		"resources": []
+	},
+	"html/device/html/device.html": {
+		"refer": [
+			"html/device/html/device-list.html",
+			"html/index.html",
+			"html/device/html/device_details.html"
+		],
+		"resources": []
+	},
+	"html/device/html/device-list.html": {
+		"refer": [
+			"html/device/html/device.html",
+			"html/device/html/device_details.html",
+			"html/index.html"
+		],
+		"resources": []
+	},
+	"html/device/html/device_details.html": {
+		"refer": [
+			"html/index.html",
+			"html/device/html/device-list.html"
+		],
+		"resources": []
+	},
+	"html/patrolinspection/html/accordion.html": {
+		"refer": [
+			"html/patrolinspection/html/patrolinspection.html",
+			"html/patrolinspection/html/patrolinspection1_inspection2.html"
+		]
+	},
+	"html/patrolinspection/html/patrolinspection1_inspection2.html": {
+		"refer": [
+			"html/index.html",
+			"html/patrolinspection/html/accordion.html",
+			"html/problemReport/html/problemReport_detail.html"
+		],
+		"resources": [
+			"html/patrolinspection/js/patrolinspection1_inspection2.js"
+		]
+	},
+	"html/user/user.html": {
+		"refer": [
+			"html/index.html",
+			"html/setup.html",
+			"html/login.html"
+		]
+	},
+	"html/initialize.html": {
+		"refer": [
+			"html/login.html"
+		],
+		"resources": [
+			"js/jquery.touchSlider.js",
+			"pjs/com_sqlite.js",
+			"js/jquery.event.drag.js",
+			"img/bak.png",
+			"pjs/common.js",
+			"js/jquery.js"
+		]
+	},
+	"html/iot_process/html/report.html": {
+		"resources": [
+			"html/iot_process/jsPackage/layui-v2.4.2/css/modules/layer/default/layer.css",
+			"html/iot_process/jsPackage/layui-v2.4.2/css/layui.css",
+			"html/iot_process/jsPackage/layui-v2.4.2/font/iconfont.woff",
+			"html/iot_process/jsPackage/layui-v2.4.2/font/iconfont.ttf",
+			"html/iot_process/jsPackage/layui-v2.4.2/font/iconfont.woff2",
+			"html/iot_process/jsPackage/layui-v2.4.2/layui.js"
+		],
+		"refer": [
+			"html/index.html"
+		]
+	},
+	"html/iot_process/html/pending-problem.html": {
+		"refer": [
+			"html/index.html",
+			"html/iot_process/html/estimate.html"
+		]
+	}
+}

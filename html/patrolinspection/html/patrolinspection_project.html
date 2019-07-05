@@ -1,0 +1,40 @@
+<!-- HTML5文件 -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Insert title here</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../../../pjs/seedsui/seedsui.min.css">
+	</head>
+	<body>
+		<header id='header'>
+			<div class="titlebar reverse">
+			<a href="javascript:back_return()" class="button left" ><i class="icon icon-arrowleft"></i></a>
+			<h1 class="text-center">巡检项目</h1>
+			<div class="right">
+			<a class="button" href="../../index.html"> <i class="icon icon-home"></i> </a>
+			</div>
+			</div>
+		</header>
+
+		<article>
+			<table id="table1"></table>
+		</article>
+		<script src="../../../pjs/jquery.min.js"></script>
+		<script src="../../../pjs/seedsui/seedsui.min.js"></script>
+		<script src="../../../pjs/mui.min.js"></script>
+		<script src="../../../pjs/com_sqlite.js"></script>
+		<script src="../../../pjs/common.js"></script>
+		<script src="../../layer/layer.js"></script>
+		<!-- 功能JS-->
+		<script src="../js/patrolinspection_project.js"></script>
+		<script>
+			//返回按键触发
+			document.addEventListener("backmonitor", function() {
+				back();
+			}, false);
+		</script>
+	</body>
+</html>
